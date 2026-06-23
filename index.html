@@ -3,432 +3,221 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="Sabba — The employee side quest benefit platform. Give your people funded sabbaticals and side quests, paid via payroll.">
+<meta name="description" content="Sabba — The employee side quest benefit platform. Give your people funded adventures, paid via payroll.">
 <title>Sabba — The Employee Side Quest Benefit Platform</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
-/* ── Reset & base ─────────────────────────────────────────────────────── */
-*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-:root {
-  --orange:   #D4622A;
-  --orange-h: #b8521f;
-  --orange-glow: rgba(212,98,42,0.25);
-  --cream:    #FAF8F5;
-  --dark:     #1a1a1a;
-  --mid:      #444;
-  --muted:    #777;
-  --faint:    #bbb;
-  --border:   rgba(212,98,42,0.15);
-  --border-light: rgba(255,255,255,0.5);
-  --white:    #ffffff;
-  --navy:     #1A2E44;
-
-  /* Glassmorphism tokens */
-  --glass-bg:        rgba(255,255,255,0.55);
-  --glass-bg-dark:   rgba(26,46,68,0.65);
-  --glass-border:    rgba(255,255,255,0.6);
-  --glass-shadow:    0 8px 32px rgba(31,38,135,0.1);
-  --glass-blur:      blur(16px);
-
-  --display: 'Playfair Display', Georgia, serif;
-  --body:    'Inter', 'Helvetica Neue', sans-serif;
-  --max: 1100px;
-  --r: 18px;
+*{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --orange:#D4622A;
+  --orange-h:#b8521f;
+  --navy:#1A2E44;
+  --cream:#FAFAF8;
+  --dark:#111;
+  --mid:#444;
+  --muted:#777;
+  --border:rgba(0,0,0,0.07);
+  --display:'Playfair Display',Georgia,serif;
+  --body:'Inter','Helvetica Neue',sans-serif;
+  --max:1100px;
+  --glass:rgba(255,255,255,0.55);
+  --glass-border:rgba(255,255,255,0.65);
+  --glass-shadow:0 8px 32px rgba(31,38,135,0.08);
+  --glass-blur:blur(18px);
+  --glass-dark:rgba(26,46,68,0.6);
+  --glass-dark-border:rgba(255,255,255,0.1);
 }
-html { scroll-behavior: smooth; }
-body {
-  background: var(--cream);
-  font-family: var(--body);
-  color: var(--dark);
-  -webkit-font-smoothing: antialiased;
-  line-height: 1.6;
-  /* Subtle mesh gradient background */
-  background-image:
-    radial-gradient(ellipse at 20% 20%, rgba(212,98,42,0.06) 0%, transparent 50%),
-    radial-gradient(ellipse at 80% 80%, rgba(26,46,68,0.06) 0%, transparent 50%),
-    radial-gradient(ellipse at 60% 10%, rgba(212,98,42,0.04) 0%, transparent 40%);
-  background-attachment: fixed;
-}
-a { color: inherit; text-decoration: none; }
-img { display: block; max-width: 100%; }
-
-/* ── Layout helpers ───────────────────────────────────────────────────── */
-.wrap { max-width: var(--max); margin: 0 auto; padding: 0 24px; }
-.section { padding: 96px 0; }
-.section--alt { background: rgba(255,255,255,0.4); backdrop-filter: blur(8px); }
-.section--dark {
-  background: linear-gradient(135deg, #0f1f2e 0%, #1A2E44 60%, #0d2438 100%);
-  color: var(--white); position: relative; overflow: hidden;
-}
-.section--dark::before {
-  content: '';
-  position: absolute; inset: 0;
-  background: radial-gradient(ellipse at 30% 50%, rgba(212,98,42,0.12) 0%, transparent 60%);
-  pointer-events: none;
-}
+html{scroll-behavior:smooth}
+body{font-family:var(--body);background:var(--cream);color:var(--dark);-webkit-font-smoothing:antialiased;line-height:1.6;overflow-x:hidden;background-image:radial-gradient(ellipse at 15% 15%,rgba(212,98,42,0.07) 0%,transparent 55%),radial-gradient(ellipse at 85% 85%,rgba(26,46,68,0.07) 0%,transparent 55%),radial-gradient(ellipse at 70% 10%,rgba(212,98,42,0.05) 0%,transparent 45%);background-attachment:fixed}
+a{color:inherit;text-decoration:none}
 
 /* ── Nav ──────────────────────────────────────────────────────────────── */
-nav {
-  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-  background: rgba(250,248,245,0.75);
-  backdrop-filter: blur(20px) saturate(180%);
-  -webkit-backdrop-filter: blur(20px) saturate(180%);
-  border-bottom: 1px solid rgba(212,98,42,0.1);
-}
-.nav-inner {
-  max-width: var(--max); margin: 0 auto; padding: 0 24px;
-  height: 62px; display: flex; align-items: center; justify-content: space-between;
-}
-.nav-logo {
-  font-family: var(--display); font-size: 22px; color: var(--dark);
-  letter-spacing: -0.02em;
-}
-.nav-links { display: flex; align-items: center; gap: 32px; }
-.nav-links a { font-size: 14px; color: var(--mid); font-weight: 500; transition: color .15s; }
-.nav-links a:hover { color: var(--orange); }
-.nav-cta {
-  background: var(--orange); color: var(--white) !important;
-  padding: 9px 20px; border-radius: 50px; font-size: 14px; font-weight: 600;
-  transition: all .2s; box-shadow: 0 4px 14px rgba(212,98,42,0.35);
-}
-.nav-cta:hover { background: var(--orange-h) !important; transform: translateY(-1px); box-shadow: 0 6px 20px rgba(212,98,42,0.45); }
-
-/* Hamburger */
-.hamburger {
-  display: none; flex-direction: column; gap: 5px;
-  background: none; border: none; cursor: pointer; padding: 4px;
-}
-.hamburger span {
-  display: block; width: 24px; height: 2px;
-  background: var(--dark); border-radius: 2px;
-  transition: transform .2s, opacity .2s;
-}
-.hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
-.hamburger.open span:nth-child(2) { opacity: 0; }
-.hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
-
-/* Mobile dropdown */
-.mobile-menu {
-  display: none; flex-direction: column;
-  background: rgba(250,248,245,0.95);
-  backdrop-filter: blur(20px);
-  border-top: 1px solid rgba(212,98,42,0.1);
-  padding: 16px 24px 20px;
-}
-.mobile-menu.open { display: flex; }
-.mobile-menu a {
-  font-size: 16px; color: var(--mid); font-weight: 500;
-  padding: 13px 0; border-bottom: 1px solid rgba(212,98,42,0.08);
-  transition: color .15s;
-}
-.mobile-menu a:last-child { border-bottom: none; padding-bottom: 0; }
-.mobile-menu a:hover { color: var(--orange); }
-.mobile-menu .mob-cta {
-  margin-top: 14px; background: var(--orange); color: var(--white) !important;
-  padding: 13px 20px; border-radius: 50px; font-weight: 600;
-  text-align: center; border-bottom: none !important;
-}
-
-/* ── Glass card ───────────────────────────────────────────────────────── */
-.glass {
-  background: var(--glass-bg);
-  backdrop-filter: var(--glass-blur);
-  -webkit-backdrop-filter: var(--glass-blur);
-  border: 1px solid var(--glass-border);
-  border-radius: var(--r);
-  box-shadow: var(--glass-shadow);
-}
-.glass-dark {
-  background: var(--glass-bg-dark);
-  backdrop-filter: var(--glass-blur);
-  -webkit-backdrop-filter: var(--glass-blur);
-  border: 1px solid rgba(255,255,255,0.12);
-  border-radius: var(--r);
-  box-shadow: 0 8px 32px rgba(0,0,0,0.2);
-}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(250,250,248,0.88);backdrop-filter:blur(20px) saturate(180%);-webkit-backdrop-filter:blur(20px) saturate(180%);border-bottom:1px solid var(--border)}
+.nav-inner{max-width:var(--max);margin:0 auto;padding:0 28px;height:64px;display:flex;align-items:center;justify-content:space-between}
+.nav-logo{font-family:var(--display);font-size:22px;color:var(--dark);letter-spacing:-0.02em}
+.nav-links{display:flex;align-items:center;gap:32px}
+.nav-links a{font-size:14px;color:var(--muted);font-weight:500;transition:color .15s}
+.nav-links a:hover{color:var(--dark)}
+.nav-cta{background:var(--dark);color:#fff !important;padding:9px 22px;border-radius:50px;font-size:14px;font-weight:500;transition:all .2s;box-shadow:0 2px 12px rgba(0,0,0,0.15)}
+.nav-cta:hover{background:#333 !important;transform:translateY(-1px)}
+.hamburger{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:4px}
+.hamburger span{display:block;width:24px;height:2px;background:var(--dark);border-radius:2px;transition:transform .2s,opacity .2s}
+.hamburger.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+.hamburger.open span:nth-child(2){opacity:0}
+.hamburger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+.mobile-menu{display:none;flex-direction:column;background:rgba(250,250,248,0.97);backdrop-filter:blur(20px);border-top:1px solid var(--border);padding:16px 28px 24px}
+.mobile-menu.open{display:flex}
+.mobile-menu a{font-size:16px;color:var(--muted);font-weight:500;padding:13px 0;border-bottom:1px solid var(--border);transition:color .15s}
+.mobile-menu a:last-child{border-bottom:none;padding-bottom:0}
+.mobile-menu a:hover{color:var(--orange)}
+.mob-cta{margin-top:14px;background:var(--dark);color:#fff !important;padding:13px 20px;border-radius:50px;font-weight:500;text-align:center;border-bottom:none !important}
 
 /* ── Hero ─────────────────────────────────────────────────────────────── */
-.hero {
-  padding: 150px 0 100px;
-  position: relative; overflow: hidden;
-  border-bottom: 1px solid rgba(212,98,42,0.1);
-}
-.hero::before {
-  content: '';
-  position: absolute; top: -200px; right: -200px;
-  width: 700px; height: 700px; border-radius: 50%;
-  background: radial-gradient(circle, rgba(212,98,42,0.1) 0%, transparent 70%);
-  pointer-events: none;
-}
-.hero::after {
-  content: '';
-  position: absolute; bottom: -100px; left: -100px;
-  width: 500px; height: 500px; border-radius: 50%;
-  background: radial-gradient(circle, rgba(26,46,68,0.07) 0%, transparent 70%);
-  pointer-events: none;
-}
-.hero-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center; position: relative; z-index: 1; }
-.hero-eyebrow {
-  display: inline-flex; align-items: center; gap: 8px;
-  font-size: 11px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase;
-  color: var(--orange); margin-bottom: 22px;
-  background: rgba(212,98,42,0.08); padding: 6px 14px; border-radius: 50px;
-  border: 1px solid rgba(212,98,42,0.2);
-}
-.hero h1 {
-  font-family: var(--display);
-  font-size: clamp(42px, 6vw, 72px);
-  line-height: 1.07; letter-spacing: -0.02em;
-  color: var(--dark); max-width: 820px; margin-bottom: 24px;
-}
-.hero h1 em { font-style: italic; color: var(--orange); }
-.hero-sub {
-  font-size: 17px; color: var(--mid); max-width: 520px;
-  line-height: 1.7; margin-bottom: 40px;
-}
-.hero-actions { display: flex; gap: 14px; flex-wrap: wrap; margin-bottom: 52px; }
-.btn-primary {
-  display: inline-flex; align-items: center; gap: 8px;
-  background: var(--orange); color: var(--white);
-  padding: 14px 28px; border-radius: 50px; font-size: 15px; font-weight: 600;
-  border: none; cursor: pointer;
-  transition: all .2s;
-  box-shadow: 0 4px 20px rgba(212,98,42,0.4);
-}
-.btn-primary:hover { background: var(--orange-h); transform: translateY(-2px); box-shadow: 0 8px 28px rgba(212,98,42,0.5); }
-.btn-secondary {
-  display: inline-flex; align-items: center; gap: 8px;
-  background: var(--glass-bg);
-  backdrop-filter: blur(12px);
-  color: var(--dark);
-  padding: 14px 28px; border-radius: 50px; font-size: 15px; font-weight: 500;
-  border: 1px solid rgba(212,98,42,0.2); cursor: pointer; transition: all .2s;
-}
-.btn-secondary:hover { border-color: var(--orange); background: rgba(255,255,255,0.8); }
+.hero{padding:110px 0 0;position:relative;overflow:hidden;border-bottom:1px solid var(--border)}
+.hero-wrap{max-width:var(--max);margin:0 auto;padding:0 28px;display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center}
 
-/* Hero stats — glass pills ───────────────────────────────────────────── */
-.hero-stats { display: flex; gap: 14px; flex-wrap: wrap; }
-.stat-pill {
-  display: flex; align-items: center; gap: 10px;
-  background: var(--glass-bg);
-  backdrop-filter: blur(12px);
-  border: 1px solid rgba(212,98,42,0.15);
-  border-radius: 50px; padding: 10px 20px;
-  box-shadow: 0 4px 16px rgba(0,0,0,0.06);
-}
-.stat-pill-num {
-  font-family: var(--display); font-size: 22px; color: var(--orange);
-  letter-spacing: -0.02em; line-height: 1;
-}
-.stat-pill-lbl { font-size: 12px; color: var(--muted); }
+/* Animated orbs */
+.orb{position:absolute;border-radius:50%;filter:blur(90px);pointer-events:none;animation:floatorb 9s ease-in-out infinite}
+.orb1{width:560px;height:560px;background:rgba(212,98,42,0.11);top:-140px;right:-140px;animation-delay:0s}
+.orb2{width:420px;height:420px;background:rgba(26,46,68,0.09);bottom:-120px;left:-80px;animation-delay:-4s}
+.orb3{width:320px;height:320px;background:rgba(212,98,42,0.06);top:45%;left:38%;animation-delay:-7s}
+@keyframes floatorb{0%,100%{transform:translateY(0) scale(1)}50%{transform:translateY(-28px) scale(1.05)}}
 
-.hero-visual { display: flex; align-items: center; justify-content: center; }
-.hero-svg { width: 100%; max-width: 460px; filter: drop-shadow(0 8px 32px rgba(0,0,0,0.06)); }
+.hero-left{position:relative;z-index:1;padding-bottom:56px;animation:fadeUp .8s ease both}
+@keyframes fadeUp{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
 
-/* ── Section labels ───────────────────────────────────────────────────── */
-.section-label {
-  display: inline-block;
-  font-size: 11px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase;
-  color: var(--orange); margin-bottom: 16px;
-  background: rgba(212,98,42,0.08); padding: 5px 12px; border-radius: 50px;
-  border: 1px solid rgba(212,98,42,0.15);
-}
-.section-heading {
-  font-family: var(--display); font-size: clamp(30px, 4vw, 48px);
-  line-height: 1.1; letter-spacing: -0.02em; margin-bottom: 14px; color: var(--dark);
-}
-.section-sub { font-size: 17px; color: var(--mid); max-width: 580px; line-height: 1.65; margin-bottom: 56px; }
+.hero-kicker{display:inline-flex;align-items:center;gap:8px;font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--orange);margin-bottom:26px;background:rgba(212,98,42,0.08);padding:6px 14px;border-radius:50px;border:1px solid rgba(212,98,42,0.18)}
+.kicker-dot{width:6px;height:6px;background:var(--orange);border-radius:50%;animation:pulse 2s ease-in-out infinite;flex-shrink:0}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.4;transform:scale(0.75)}}
+.hero h1{font-family:var(--display);font-size:clamp(44px,5.5vw,70px);line-height:1.05;letter-spacing:-0.03em;color:var(--dark);margin-bottom:24px}
+.hero h1 em{font-style:italic;color:var(--orange)}
+.hero-sub{font-size:17px;color:var(--mid);max-width:440px;line-height:1.75;margin-bottom:36px}
+.hero-actions{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:48px}
+.btn-dark{display:inline-flex;align-items:center;gap:8px;background:var(--dark);color:#fff;padding:14px 30px;border-radius:50px;font-size:15px;font-weight:500;transition:all .2s;box-shadow:0 4px 20px rgba(0,0,0,0.18)}
+.btn-dark:hover{background:#333;transform:translateY(-2px);box-shadow:0 8px 28px rgba(0,0,0,0.22)}
+.btn-outline{display:inline-flex;align-items:center;gap:8px;background:transparent;color:var(--dark);padding:14px 24px;border-radius:50px;font-size:15px;font-weight:500;border:1.5px solid rgba(0,0,0,0.12);transition:all .2s}
+.btn-outline:hover{border-color:var(--orange);color:var(--orange)}
+.hero-stats{display:flex;gap:12px;flex-wrap:wrap}
+.stat-pill{display:flex;align-items:center;gap:10px;background:rgba(255,255,255,0.72);backdrop-filter:blur(12px);border:1px solid rgba(0,0,0,0.07);border-radius:50px;padding:10px 18px;animation:fadeUp .8s ease both;box-shadow:0 2px 12px rgba(0,0,0,0.05)}
+.stat-pill:nth-child(1){animation-delay:.12s}
+.stat-pill:nth-child(2){animation-delay:.22s}
+.stat-pill:nth-child(3){animation-delay:.32s}
+.stat-num{font-family:var(--display);font-size:22px;color:var(--orange);line-height:1}
+.stat-lbl{font-size:12px;color:var(--muted);line-height:1.35;max-width:100px}
 
-/* ── Problem ──────────────────────────────────────────────────────────── */
-.problem-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: center; }
-.problem-text h2 {
-  font-family: var(--display); font-size: clamp(30px, 4vw, 46px);
-  line-height: 1.1; letter-spacing: -0.02em; margin-bottom: 20px;
-}
-.problem-text p { font-size: 16px; color: var(--mid); line-height: 1.75; margin-bottom: 16px; }
-.stat-cards { display: flex; flex-direction: column; gap: 16px; }
-.stat-card {
-  background: var(--glass-bg);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border: 1px solid var(--glass-border);
-  border-radius: var(--r); padding: 24px 28px;
-  display: flex; align-items: center; gap: 20px;
-  box-shadow: var(--glass-shadow);
-  transition: transform .2s, box-shadow .2s;
-}
-.stat-card:hover { transform: translateY(-3px); box-shadow: 0 16px 40px rgba(31,38,135,0.14); }
-.stat-card-num {
-  font-family: var(--display); font-size: 44px; color: var(--orange);
-  letter-spacing: -0.02em; line-height: 1; flex-shrink: 0; min-width: 90px;
-}
-.stat-card-text strong { display: block; font-size: 15px; color: var(--dark); font-weight: 600; margin-bottom: 3px; }
-.stat-card-text span { font-size: 13px; color: var(--muted); }
+/* Hero right visual */
+.hero-right{position:relative;height:520px;display:flex;align-items:center;justify-content:center;animation:fadeUp .8s ease .2s both}
+.hero-svg{width:100%;max-width:460px}
+/* Floating cards */
+.fc{position:absolute;background:rgba(255,255,255,0.88);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border:1px solid rgba(255,255,255,0.9);border-radius:16px;padding:14px 18px;box-shadow:0 8px 32px rgba(0,0,0,0.1)}
+.fc1{top:28px;right:0;animation:bob 4s ease-in-out infinite}
+.fc2{top:170px;left:0;animation:bob 5s ease-in-out infinite .8s}
+.fc3{bottom:90px;right:16px;animation:bob 4.5s ease-in-out infinite 1.5s}
+.fc4{bottom:24px;left:16px;animation:bob 3.8s ease-in-out infinite .4s}
+@keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+.fc-label{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:#aaa;margin-bottom:4px}
+.fc-val{font-size:17px;font-weight:600;color:var(--dark)}
+.fc-sub{font-size:11px;color:#888;margin-top:2px}
+.fc-tag{display:inline-block;background:rgba(212,98,42,0.1);color:var(--orange);font-size:10px;font-weight:700;padding:3px 8px;border-radius:20px;text-transform:uppercase;letter-spacing:.06em;margin-bottom:5px}
+.fc-badge{display:inline-flex;align-items:center;gap:5px;background:#E6F4EC;color:#1A6A3A;font-size:11px;font-weight:600;padding:4px 10px;border-radius:20px;margin-top:6px}
+.fc-badge-dot{width:6px;height:6px;background:#1A6A3A;border-radius:50%}
+.prog-wrap{margin-top:8px}
+.prog-labels{display:flex;justify-content:space-between;font-size:10px;color:#aaa;margin-bottom:4px}
+.prog-track{height:5px;background:#eee;border-radius:3px;overflow:hidden}
+.prog-fill{height:100%;background:linear-gradient(90deg,var(--orange),#e88050);border-radius:3px;animation:grow 1.8s ease .6s both;width:67%}
+@keyframes grow{from{width:0}to{width:67%}}
+
+/* ── Divider ──────────────────────────────────────────────────────────── */
+.divider{height:1px;background:linear-gradient(90deg,transparent,rgba(0,0,0,0.07),transparent)}
+
+/* ── Section base ─────────────────────────────────────────────────────── */
+.section{padding:64px 0}
+.section--white{background:rgba(255,255,255,0.5);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px)}
+.section--navy{background:linear-gradient(135deg,#0f1f2e 0%,var(--navy) 60%,#0d2438 100%);color:#fff;position:relative;overflow:hidden}
+.section--navy::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 25% 50%,rgba(212,98,42,0.1) 0%,transparent 60%);pointer-events:none}
+.wrap{max-width:var(--max);margin:0 auto;padding:0 28px}
+.section-kicker{display:inline-block;font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--orange);margin-bottom:16px;background:rgba(212,98,42,0.08);padding:5px 13px;border-radius:50px;border:1px solid rgba(212,98,42,0.15)}
+.section-kicker--light{color:rgba(212,98,42,0.8);background:rgba(212,98,42,0.12);border-color:rgba(212,98,42,0.2)}
+.section-h2{font-family:var(--display);font-size:clamp(32px,4vw,50px);line-height:1.08;letter-spacing:-0.02em;margin-bottom:14px}
+.section-sub{font-size:17px;color:var(--mid);max-width:560px;line-height:1.7;margin-bottom:36px}
+.section-sub--light{color:rgba(255,255,255,0.6)}
 
 /* ── How it works ─────────────────────────────────────────────────────── */
-.hiw-flow { margin-bottom: 56px; overflow-x: auto; }
-.flow-svg { width: 100%; max-width: 700px; display: block; margin: 0 auto; }
-.three-col { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
-.party-card {
-  background: var(--glass-bg);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border: 1px solid var(--glass-border);
-  border-radius: var(--r); padding: 32px 28px;
-  position: relative; overflow: hidden;
-  box-shadow: var(--glass-shadow);
-  transition: transform .2s, box-shadow .2s;
-}
-.party-card:hover { transform: translateY(-4px); box-shadow: 0 20px 48px rgba(31,38,135,0.14); }
-.party-card::before {
-  content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
-  background: linear-gradient(90deg, var(--orange), rgba(212,98,42,0.4));
-}
-.party-card-icon { font-size: 32px; margin-bottom: 18px; }
-.party-card-who {
-  font-size: 11px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase;
-  color: var(--orange); margin-bottom: 8px;
-}
-.party-card h3 { font-size: 20px; font-weight: 700; color: var(--dark); margin-bottom: 12px; }
-.party-card p { font-size: 14px; color: var(--mid); line-height: 1.7; margin-bottom: 20px; }
-.party-card ul { list-style: none; display: flex; flex-direction: column; gap: 9px; }
-.party-card ul li { font-size: 13px; color: var(--mid); padding-left: 18px; position: relative; }
-.party-card ul li::before { content: '→'; position: absolute; left: 0; color: var(--orange); font-size: 12px; }
+.flow-wrap{margin-bottom:36px;overflow-x:auto}
+.flow-svg{width:100%;max-width:700px;display:block;margin:0 auto}
+.party-row{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.party{background:var(--glass);backdrop-filter:var(--glass-blur);-webkit-backdrop-filter:var(--glass-blur);border:1px solid var(--glass-border);padding:28px 28px;transition:all .2s;box-shadow:var(--glass-shadow)}
+.party:hover{background:rgba(255,255,255,0.82);transform:translateY(-3px);box-shadow:0 16px 40px rgba(31,38,135,0.13)}
+.party-n{font-family:var(--display);font-size:40px;color:rgba(0,0,0,0.05);line-height:1;margin-bottom:10px}
+.party-who{font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--orange);margin-bottom:10px;display:flex;align-items:center;gap:8px}
+.party-bar{width:22px;height:2px;background:var(--orange);display:inline-block;flex-shrink:0}
+.party h3{font-size:18px;font-weight:600;margin-bottom:10px;color:var(--dark)}
+.party p{font-size:13px;color:#666;line-height:1.7;margin-bottom:16px}
+.party ul{list-style:none;display:flex;flex-direction:column;gap:8px}
+.party li{font-size:13px;color:var(--mid);padding-left:16px;position:relative}
+.party li::before{content:'→';position:absolute;left:0;color:var(--orange);font-size:12px}
+.party--accent{background:rgba(255,255,255,0.75) !important;border-top:3px solid var(--orange)}
 
-/* ── Platform features ────────────────────────────────────────────────── */
-.features-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
-.feature-item {
-  background: var(--glass-bg);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border: 1px solid var(--glass-border);
-  border-radius: var(--r); padding: 28px 30px;
-  box-shadow: var(--glass-shadow);
-  transition: transform .2s, box-shadow .2s;
-}
-.feature-item:hover { transform: translateY(-3px); box-shadow: 0 16px 40px rgba(31,38,135,0.12); }
-.feature-icon { font-size: 28px; margin-bottom: 14px; }
-.feature-item h4 { font-size: 16px; font-weight: 700; color: var(--dark); margin-bottom: 8px; }
-.feature-item p { font-size: 13px; color: var(--mid); line-height: 1.65; }
-
-/* ── Tech pills ───────────────────────────────────────────────────────── */
-.tech-pills { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 36px; }
-.tech-pill {
-  background: var(--glass-bg);
-  backdrop-filter: blur(8px);
-  border: 1px solid rgba(212,98,42,0.15);
-  border-radius: 50px; padding: 8px 18px;
-  font-size: 13px; font-weight: 500; color: var(--dark);
-  transition: all .2s;
-}
-.tech-pill:hover { border-color: var(--orange); color: var(--orange); }
+/* ── Platform ─────────────────────────────────────────────────────────── */
+.feat-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin-top:32px}
+.feat{background:var(--glass);backdrop-filter:var(--glass-blur);-webkit-backdrop-filter:var(--glass-blur);border:1px solid var(--glass-border);border-radius:16px;padding:26px 28px;transition:all .2s;box-shadow:var(--glass-shadow)}
+.feat:hover{background:rgba(255,255,255,0.82);transform:translateY(-3px);box-shadow:0 16px 40px rgba(31,38,135,0.13)}
+.feat-icon-wrap{width:46px;height:46px;background:rgba(255,255,255,0.7);backdrop-filter:blur(8px);border:1px solid rgba(212,98,42,0.15);border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:22px;margin-bottom:18px;box-shadow:0 2px 8px rgba(212,98,42,0.08)}
+.feat h4{font-size:15px;font-weight:600;margin-bottom:8px;color:var(--dark)}
+.feat p{font-size:13px;color:#666;line-height:1.7}
+.tech-pills{display:flex;flex-wrap:wrap;gap:8px;margin-top:32px;padding-top:32px;border-top:1px solid var(--border)}
+.tech-pill{background:var(--glass);backdrop-filter:var(--glass-blur);-webkit-backdrop-filter:var(--glass-blur);border:1px solid var(--glass-border);border-radius:50px;padding:8px 18px;font-size:13px;font-weight:500;color:var(--dark);transition:all .2s;box-shadow:0 2px 8px rgba(0,0,0,0.05)}
+.tech-pill:hover{border-color:var(--orange);color:var(--orange)}
 
 /* ── Categories ───────────────────────────────────────────────────────── */
-.cats-banner { margin-bottom: 48px; overflow-x: auto; }
-.cats-svg { width: 100%; max-width: 660px; display: block; margin: 0 auto; height: 90px; }
-.cats-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
-.cat-card {
-  background: var(--glass-bg);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border: 1px solid var(--glass-border);
-  border-radius: var(--r); padding: 28px 24px;
-  box-shadow: var(--glass-shadow);
-  transition: transform .2s, box-shadow .2s;
-}
-.cat-card:hover { transform: translateY(-4px); box-shadow: 0 20px 48px rgba(31,38,135,0.14); border-color: rgba(212,98,42,0.3); }
-.cat-icon { font-size: 32px; margin-bottom: 14px; }
-.cat-card h4 { font-size: 15px; font-weight: 700; color: var(--dark); margin-bottom: 7px; }
-.cat-card p { font-size: 13px; color: var(--muted); line-height: 1.6; }
+.cats-banner{margin-bottom:28px;overflow-x:auto}
+.cats-svg{width:100%;max-width:680px;display:block;margin:0 auto;height:90px}
+.cats-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.cat{background:var(--glass);backdrop-filter:var(--glass-blur);-webkit-backdrop-filter:var(--glass-blur);border:1px solid var(--glass-border);border-radius:16px;padding:24px 24px;transition:all .2s;box-shadow:var(--glass-shadow)}
+.cat:hover{background:rgba(255,255,255,0.82);transform:translateY(-3px);box-shadow:0 16px 40px rgba(31,38,135,0.13);border-color:rgba(212,98,42,0.25)}
+.cat-icon{font-size:30px;margin-bottom:14px}
+.cat h4{font-size:15px;font-weight:600;color:var(--dark);margin-bottom:7px}
+.cat p{font-size:13px;color:#666;line-height:1.65}
 
 /* ── Traction ─────────────────────────────────────────────────────────── */
-.traction-visual { margin-bottom: 48px; }
-.world-svg { width: 100%; max-width: 700px; display: block; margin: 0 auto; height: 200px; background: rgba(255,255,255,0.5); backdrop-filter: blur(12px); border-radius: 18px; border: 1px solid rgba(255,255,255,0.6); box-shadow: var(--glass-shadow); }
-.traction-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
-.traction-item {
-  background: var(--glass-bg);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border: 1px solid var(--glass-border);
-  border-radius: var(--r); padding: 32px 22px; text-align: center;
-  box-shadow: var(--glass-shadow);
-  transition: transform .2s;
-}
-.traction-item:hover { transform: translateY(-4px); }
-.traction-num {
-  font-family: var(--display); font-size: 42px; color: var(--orange);
-  letter-spacing: -0.02em; line-height: 1; margin-bottom: 10px;
-}
-.traction-label { font-size: 13px; color: var(--dark); font-weight: 600; margin-bottom: 5px; }
-.traction-sub { font-size: 11px; color: var(--muted); line-height: 1.55; }
+.world-svg{width:100%;max-width:700px;display:block;margin:0 auto 48px;height:200px;background:rgba(255,255,255,0.05);border-radius:16px;border:1px solid rgba(255,255,255,0.08)}
+.traction-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.traction-item{background:var(--glass-dark);backdrop-filter:var(--glass-blur);-webkit-backdrop-filter:var(--glass-blur);border:1px solid var(--glass-dark-border);border-radius:16px;padding:28px 24px;transition:all .2s;box-shadow:0 8px 32px rgba(0,0,0,0.2)}
+.traction-item:hover{background:rgba(26,46,68,0.8);transform:translateY(-3px);box-shadow:0 16px 40px rgba(0,0,0,0.28)}
+.traction-num{font-family:var(--display);font-size:42px;color:var(--orange);line-height:1;margin-bottom:8px}
+.traction-label{font-size:13px;color:#fff;font-weight:500;margin-bottom:5px}
+.traction-sub{font-size:11px;color:rgba(255,255,255,0.4);line-height:1.55}
 
 /* ── Contact ──────────────────────────────────────────────────────────── */
-.contact-glass {
-  background: var(--glass-bg);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  border: 1px solid var(--glass-border);
-  border-radius: 24px;
-  padding: 64px 48px;
-  text-align: center;
-  box-shadow: 0 16px 48px rgba(31,38,135,0.1);
-  max-width: 640px;
-  margin: 0 auto;
-  position: relative; overflow: hidden;
-}
-.contact-glass::before {
-  content: '';
-  position: absolute; top: -80px; right: -80px;
-  width: 280px; height: 280px; border-radius: 50%;
-  background: radial-gradient(circle, rgba(212,98,42,0.08) 0%, transparent 70%);
-  pointer-events: none;
-}
+.contact-wrap{background:var(--glass);backdrop-filter:var(--glass-blur);-webkit-backdrop-filter:var(--glass-blur);border:1px solid var(--glass-border);border-radius:24px;padding:56px 60px;box-shadow:var(--glass-shadow)}.contact-inner{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center}
+.contact-right{display:flex;flex-direction:column;gap:20px}
+.contact-email{display:flex;align-items:center;gap:12px;color:var(--dark);font-size:clamp(16px,2.5vw,22px);font-weight:500;border-bottom:2px solid rgba(212,98,42,0.25);padding-bottom:14px;transition:all .2s}
+.contact-email:hover{color:var(--orange);border-color:var(--orange)}
+.contact-note{font-size:13px;color:var(--muted)}
 
 /* ── Footer ───────────────────────────────────────────────────────────── */
-footer {
-  background: rgba(26,46,68,0.97);
-  backdrop-filter: blur(12px);
-  color: rgba(255,255,255,0.5);
-  padding: 44px 0; font-size: 13px;
-  border-top: 1px solid rgba(255,255,255,0.06);
-}
-footer a { color: rgba(255,255,255,0.5); transition: color .15s; }
-footer a:hover { color: var(--white); }
-.footer-inner { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px; }
-.footer-logo { font-family: var(--display); font-size: 20px; color: var(--white); }
-.footer-links { display: flex; gap: 28px; }
+footer{background:rgba(17,17,17,0.97);padding:40px 0;border-top:1px solid rgba(255,255,255,0.06)}
+.footer-inner{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px}
+.footer-logo{font-family:var(--display);font-size:20px;color:#fff}
+.footer-links{display:flex;gap:28px}
+.footer-links a{font-size:13px;color:rgba(255,255,255,0.45);transition:color .15s}
+.footer-links a:hover{color:#fff}
+.footer-copy{font-size:12px;color:rgba(255,255,255,0.3)}
+
+/* ── Scroll reveal ────────────────────────────────────────────────────── */
+.reveal{opacity:0;transform:translateY(28px);transition:opacity .65s ease,transform .65s ease}
+.reveal.visible{opacity:1;transform:translateY(0)}
+.reveal-delay-1{transition-delay:.1s}
+.reveal-delay-2{transition-delay:.2s}
+.reveal-delay-3{transition-delay:.3s}
 
 /* ── Responsive ───────────────────────────────────────────────────────── */
-@media (max-width: 900px) {
-  .problem-grid { grid-template-columns: 1fr; }
-  .three-col { grid-template-columns: 1fr; gap: 16px; }
-  .features-grid { grid-template-columns: 1fr; }
-  .cats-grid { grid-template-columns: repeat(2, 1fr); }
-  .traction-grid { grid-template-columns: repeat(2, 1fr); }
-  .raise-box { padding: 40px 28px; }
-  .nav-links { display: none; }
-  .hamburger { display: flex; }
-  .hero-grid { grid-template-columns: 1fr; }
-  .hero-visual { display: none; }
+@media(max-width:900px){
+  .hero-wrap{grid-template-columns:1fr}
+  .hero-right{display:none}
+  .feat-grid{grid-template-columns:1fr}
+  .cats-grid{grid-template-columns:repeat(2,1fr)}
+  .traction-grid{grid-template-columns:repeat(2,1fr)}
+  .contact-inner{grid-template-columns:1fr;gap:40px}
+  .nav-links{display:none}
+  .hamburger{display:flex}
 }
-@media (max-width: 600px) {
-  .section { padding: 64px 0; }
-  .cats-grid { grid-template-columns: 1fr; }
-  .traction-grid { grid-template-columns: repeat(2, 1fr); }
-  .hero-stats { gap: 10px; flex-direction: column; }
-  .contact-glass { padding: 40px 24px; }
+@media(max-width:600px){
+  .section{padding:48px 0}
+  .hero{padding-top:100px}
+  .cats-grid{grid-template-columns:1fr}
+  .traction-grid{grid-template-columns:repeat(2,1fr)}
+  .hero-stats{gap:8px}
+  .hero-left{padding-bottom:56px}
 }
-@media (prefers-reduced-motion: reduce) {
-  * { animation: none !important; transition: none !important; }
-}
+@media(prefers-reduced-motion:reduce){*{animation:none !important;transition:none !important}}
 </style>
-
 </head>
 <body>
 
-<!-- ── Nav ───────────────────────────────────────────────────────────────── -->
+<!-- ── Nav ────────────────────────────────────────────────────────────────── -->
 <nav>
   <div class="nav-inner">
     <a href="#" class="nav-logo">Sabba</a>
@@ -455,228 +244,130 @@ footer a:hover { color: var(--white); }
 </nav>
 
 <script>
-const btn = document.getElementById('hamburger');
-const menu = document.getElementById('mobile-menu');
-btn.addEventListener('click', () => {
-  btn.classList.toggle('open');
-  menu.classList.toggle('open');
-});
-// Close menu when a link is tapped
-menu.querySelectorAll('a').forEach(a => {
-  a.addEventListener('click', () => {
-    btn.classList.remove('open');
-    menu.classList.remove('open');
-  });
-});
+const btn=document.getElementById('hamburger'),menu=document.getElementById('mobile-menu');
+btn.addEventListener('click',()=>{btn.classList.toggle('open');menu.classList.toggle('open')});
+menu.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{btn.classList.remove('open');menu.classList.remove('open')}));
 </script>
 
-<!-- ── Hero ──────────────────────────────────────────────────────────────── -->
+<!-- ── Hero ───────────────────────────────────────────────────────────────── -->
 <section class="hero">
-  <div class="wrap hero-grid">
-    <div class="hero-text">
-      <div class="hero-eyebrow">Employee side quest benefit platform</div>
-      <h1>The benefit that makes<br>people <em>stay.</em></h1>
-      <p class="hero-sub">Sabba gives employers a structured way to fund their people's side quests — travel, volunteering, courses, work abroad and more — booked through a curated marketplace and paid via payroll. A benefit employees actually want.</p>
+  <div class="orb orb1"></div>
+  <div class="orb orb2"></div>
+  <div class="orb orb3"></div>
+  <div class="hero-wrap">
+    <div class="hero-left">
+      <div class="hero-kicker"><div class="kicker-dot"></div>Employee side quest benefit platform</div>
+      <h1>The benefit that<br>makes people <em>stay.</em></h1>
+      <p class="hero-sub">Sabba gives employers a structured way to fund their people's side quests — travel, volunteering, courses, work abroad and more — booked through a curated marketplace and paid via payroll.</p>
       <div class="hero-actions">
-        <a href="https://sabba.app" target="_blank" class="btn-primary">See the live platform →</a>
-        <a href="mailto:hello@sabbaplatform.com" class="btn-secondary">Get in touch</a>
+        <a href="https://sabba.app" target="_blank" class="btn-dark">See the live platform →</a>
+        <a href="mailto:hello@sabbaplatform.com" class="btn-outline">Get in touch</a>
       </div>
       <div class="hero-stats">
-        <div class="stat-item"><div class="stat-num">50%</div><div class="stat-lbl">UK companies now offer side quest leave</div></div>
-        <div class="stat-item"><div class="stat-num">42%</div><div class="stat-lbl">Employees actively want it</div></div>
-        <div class="stat-item"><div class="stat-num">Live</div><div class="stat-lbl">Full platform deployed today</div></div>
+        <div class="stat-pill"><div class="stat-num">50%</div><div class="stat-lbl">UK companies now offer side quest leave</div></div>
+        <div class="stat-pill"><div class="stat-num">42%</div><div class="stat-lbl">Employees actively want it</div></div>
+        <div class="stat-pill"><div class="stat-num">Live</div><div class="stat-lbl">Full platform deployed today</div></div>
       </div>
     </div>
-    <div class="hero-visual" aria-hidden="true">
-      <!-- Animated side quest scene -->
-      <svg viewBox="0 0 480 420" xmlns="http://www.w3.org/2000/svg" class="hero-svg">
+    <div class="hero-right">
+      <svg class="hero-svg" viewBox="0 0 480 440" xmlns="http://www.w3.org/2000/svg">
         <defs>
-          <radialGradient id="sky" cx="50%" cy="30%" r="70%">
-            <stop offset="0%" stop-color="#E8F4FD"/>
-            <stop offset="100%" stop-color="#F7F5F2"/>
-          </radialGradient>
-          <linearGradient id="mtn1" x1="0" y1="0" x2="0" y2="1">
-            <stop offset="0%" stop-color="#1A2E44"/>
-            <stop offset="100%" stop-color="#2A4560"/>
-          </linearGradient>
-          <linearGradient id="mtn2" x1="0" y1="0" x2="0" y2="1">
-            <stop offset="0%" stop-color="#D4622A"/>
-            <stop offset="100%" stop-color="#E8834A"/>
-          </linearGradient>
-          <linearGradient id="mtn3" x1="0" y1="0" x2="0" y2="1">
-            <stop offset="0%" stop-color="#3A5570"/>
-            <stop offset="100%" stop-color="#1A2E44"/>
-          </linearGradient>
+          <radialGradient id="skyg" cx="50%" cy="30%" r="70%"><stop offset="0%" stop-color="#E8F4FD"/><stop offset="100%" stop-color="#F7F5F2"/></radialGradient>
+          <linearGradient id="m1" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#1A2E44"/><stop offset="100%" stop-color="#2A4560"/></linearGradient>
+          <linearGradient id="m2" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#D4622A"/><stop offset="100%" stop-color="#E8834A"/></linearGradient>
         </defs>
-
-        <!-- Sky background -->
-        <rect width="480" height="420" fill="url(#sky)" rx="20"/>
-
-        <!-- Sun / glow -->
+        <rect width="480" height="440" fill="url(#skyg)" rx="24"/>
         <circle cx="380" cy="80" r="44" fill="#FEF3E2" opacity="0.9"/>
-        <circle cx="380" cy="80" r="32" fill="#FDDFA0" opacity="0.8"/>
-        <circle cx="380" cy="80" r="20" fill="#F5C842"/>
-
-        <!-- Sun rays -->
-        <g stroke="#F5C842" stroke-width="1.5" opacity="0.5">
-          <line x1="380" y1="28" x2="380" y2="18"><animate attributeName="opacity" values="0.5;0.9;0.5" dur="3s" repeatCount="indefinite"/></line>
-          <line x1="380" y1="132" x2="380" y2="142"><animate attributeName="opacity" values="0.5;0.9;0.5" dur="3s" begin="0.3s" repeatCount="indefinite"/></line>
-          <line x1="328" y1="80" x2="318" y2="80"><animate attributeName="opacity" values="0.5;0.9;0.5" dur="3s" begin="0.6s" repeatCount="indefinite"/></line>
-          <line x1="432" y1="80" x2="442" y2="80"><animate attributeName="opacity" values="0.5;0.9;0.5" dur="3s" begin="0.9s" repeatCount="indefinite"/></line>
-          <line x1="343" y1="43" x2="336" y2="36"><animate attributeName="opacity" values="0.5;0.9;0.5" dur="3s" begin="0.2s" repeatCount="indefinite"/></line>
-          <line x1="417" y1="43" x2="424" y2="36"><animate attributeName="opacity" values="0.5;0.9;0.5" dur="3s" begin="0.5s" repeatCount="indefinite"/></line>
-          <line x1="343" y1="117" x2="336" y2="124"><animate attributeName="opacity" values="0.5;0.9;0.5" dur="3s" begin="0.8s" repeatCount="indefinite"/></line>
-          <line x1="417" y1="117" x2="424" y2="124"><animate attributeName="opacity" values="0.5;0.9;0.5" dur="3s" begin="1.1s" repeatCount="indefinite"/></line>
+        <circle cx="380" cy="80" r="28" fill="#FDDFA0" opacity="0.8"/>
+        <circle cx="380" cy="80" r="16" fill="#F5C842"/>
+        <g stroke="#F5C842" stroke-width="1.5" opacity="0.55">
+          <line x1="380" y1="26" x2="380" y2="16"><animate attributeName="opacity" values=".55;1;.55" dur="3s" repeatCount="indefinite"/></line>
+          <line x1="380" y1="134" x2="380" y2="144"><animate attributeName="opacity" values=".55;1;.55" dur="3s" begin=".4s" repeatCount="indefinite"/></line>
+          <line x1="326" y1="80" x2="316" y2="80"><animate attributeName="opacity" values=".55;1;.55" dur="3s" begin=".8s" repeatCount="indefinite"/></line>
+          <line x1="434" y1="80" x2="444" y2="80"><animate attributeName="opacity" values=".55;1;.55" dur="3s" begin="1.2s" repeatCount="indefinite"/></line>
+          <line x1="342" y1="43" x2="335" y2="36"><animate attributeName="opacity" values=".55;1;.55" dur="3s" begin=".2s" repeatCount="indefinite"/></line>
+          <line x1="418" y1="43" x2="425" y2="36"><animate attributeName="opacity" values=".55;1;.55" dur="3s" begin=".6s" repeatCount="indefinite"/></line>
         </g>
-
-        <!-- Clouds -->
-        <g opacity="0.75">
-          <g><animateTransform attributeName="transform" type="translate" values="0,0;12,0;0,0" dur="8s" repeatCount="indefinite"/>
-            <ellipse cx="80" cy="70" rx="38" ry="16" fill="white"/>
+        <g opacity="0.7">
+          <g><animateTransform attributeName="transform" type="translate" values="0,0;14,0;0,0" dur="9s" repeatCount="indefinite"/>
+            <ellipse cx="80" cy="72" rx="40" ry="16" fill="white"/>
             <ellipse cx="100" cy="62" rx="28" ry="14" fill="white"/>
-            <ellipse cx="62" cy="65" rx="20" ry="12" fill="white"/>
+            <ellipse cx="60" cy="68" rx="20" ry="11" fill="white"/>
           </g>
-          <g><animateTransform attributeName="transform" type="translate" values="0,0;-8,0;0,0" dur="11s" repeatCount="indefinite"/>
-            <ellipse cx="220" cy="55" rx="30" ry="12" fill="white"/>
-            <ellipse cx="238" cy="48" rx="22" ry="11" fill="white"/>
-            <ellipse cx="206" cy="52" rx="16" ry="10" fill="white"/>
+          <g><animateTransform attributeName="transform" type="translate" values="0,0;-10,0;0,0" dur="12s" repeatCount="indefinite"/>
+            <ellipse cx="220" cy="56" rx="30" ry="12" fill="white"/>
+            <ellipse cx="240" cy="48" rx="22" ry="10" fill="white"/>
           </g>
         </g>
-
-        <!-- Back mountains -->
-        <polygon points="0,310 80,160 160,310" fill="#C8D8E8" opacity="0.6"/>
-        <polygon points="60,310 160,140 260,310" fill="#B8CCE0" opacity="0.5"/>
-
-        <!-- Main mountain left (navy) -->
-        <polygon points="20,370 160,180 300,370" fill="url(#mtn1)"/>
-        <!-- Snow cap -->
-        <polygon points="140,200 160,180 180,200 165,210 155,210" fill="white" opacity="0.9"/>
-
-        <!-- Main mountain right (orange accent) -->
-        <polygon points="200,370 330,195 460,370" fill="url(#mtn2)"/>
-        <!-- Snow cap -->
-        <polygon points="312,215 330,195 348,215 335,225 325,225" fill="white" opacity="0.9"/>
-
-        <!-- Mid mountain overlay -->
-        <polygon points="0,370 100,250 220,370" fill="url(#mtn3)" opacity="0.9"/>
-
-        <!-- Ground / grass strip -->
-        <rect x="0" y="355" width="480" height="65" rx="0" fill="#2A5C3A"/>
-        <ellipse cx="240" cy="355" rx="260" ry="18" fill="#2A5C3A"/>
-
-        <!-- Path winding up -->
-        <path d="M 80 370 Q 120 340 150 310 Q 180 280 200 260" stroke="#F5C842" stroke-width="2.5" fill="none" stroke-dasharray="6 4" opacity="0.7">
+        <polygon points="0,320 80,170 160,320" fill="#C8D8E8" opacity="0.5"/>
+        <polygon points="60,320 160,148 260,320" fill="#B8CCE0" opacity="0.45"/>
+        <polygon points="20,380 165,188 308,380" fill="url(#m1)"/>
+        <polygon points="140,205 165,188 190,205 175,216 155,216" fill="white" opacity="0.92"/>
+        <polygon points="210,380 335,200 460,380" fill="url(#m2)"/>
+        <polygon points="317,220 335,200 353,220 340,230 328,230" fill="white" opacity="0.92"/>
+        <polygon points="0,380 100,260 220,380" fill="#1A2E44" opacity="0.88"/>
+        <rect x="0" y="366" width="480" height="74" fill="#2A5C3A"/>
+        <ellipse cx="240" cy="366" rx="264" ry="18" fill="#2A5C3A"/>
+        <g fill="#1A4A2A">
+          <polygon points="28,376 40,346 52,376"/><polygon points="34,360 40,338 46,360"/>
+          <polygon points="52,376 62,350 72,376"/><polygon points="56,362 62,342 68,362"/>
+          <polygon points="392,376 404,346 416,376"/><polygon points="398,360 404,338 410,360"/>
+        </g>
+        <path d="M80 380 Q120 348 152 316 Q184 284 202 264" stroke="#F5C842" stroke-width="2.5" fill="none" stroke-dasharray="6 4" opacity="0.65">
           <animate attributeName="stroke-dashoffset" values="0;-20" dur="1.5s" repeatCount="indefinite"/>
         </path>
-
-        <!-- Trees -->
-        <g fill="#1A4A2A">
-          <polygon points="30,370 42,340 54,370"/>
-          <polygon points="36,355 42,332 48,355"/>
-          <polygon points="55,370 65,345 75,370"/>
-          <polygon points="60,357 65,338 70,357"/>
-          <polygon points="390,370 402,340 414,370"/>
-          <polygon points="396,355 402,332 408,355"/>
-          <polygon points="415,370 425,348 435,370"/>
+        <g><animateTransform attributeName="transform" type="translate" values="372,234;372,226;372,234" dur="4s" repeatCount="indefinite"/>
+          <circle cx="0" cy="0" r="28" fill="white" stroke="#E8E5E1" stroke-width="1.5"/>
+          <circle cx="0" cy="0" r="24" fill="white"/>
+          <text x="0" y="-14" text-anchor="middle" font-size="7" fill="#999" font-family="Inter">N</text>
+          <text x="0" y="18" text-anchor="middle" font-size="7" fill="#999" font-family="Inter">S</text>
+          <text x="17" y="4" text-anchor="middle" font-size="7" fill="#999" font-family="Inter">E</text>
+          <text x="-17" y="4" text-anchor="middle" font-size="7" fill="#999" font-family="Inter">W</text>
+          <polygon points="0,-17 3,0 0,4 -3,0" fill="#D4622A"><animateTransform attributeName="transform" type="rotate" values="0;6;-3;0" dur="6s" repeatCount="indefinite"/></polygon>
+          <circle cx="0" cy="0" r="3" fill="#1A2E44"/>
         </g>
-
-        <!-- Floating compass — animated bob -->
-        <g transform="translate(370, 230)">
-          <animateTransform attributeName="transform" type="translate" values="370,230;370,222;370,230" dur="4s" repeatCount="indefinite"/>
-          <circle r="28" fill="white" stroke="#E8E5E1" stroke-width="1.5" filter="drop-shadow(0 4px 12px rgba(0,0,0,0.15))"/>
-          <circle r="24" fill="white"/>
-          <!-- Compass ring -->
-          <circle r="22" fill="none" stroke="#E8E5E1" stroke-width="1"/>
-          <!-- N S E W labels -->
-          <text x="0" y="-13" text-anchor="middle" font-size="6" fill="#777" font-family="Inter,sans-serif" font-weight="600">N</text>
-          <text x="0" y="18" text-anchor="middle" font-size="6" fill="#777" font-family="Inter,sans-serif" font-weight="600">S</text>
-          <text x="16" y="3" text-anchor="middle" font-size="6" fill="#777" font-family="Inter,sans-serif" font-weight="600">E</text>
-          <text x="-16" y="3" text-anchor="middle" font-size="6" fill="#777" font-family="Inter,sans-serif" font-weight="600">W</text>
-          <!-- Needle -->
-          <polygon points="0,-16 3,0 0,4 -3,0" fill="#D4622A">
-            <animateTransform attributeName="transform" type="rotate" values="0;5;-3;0" dur="6s" repeatCount="indefinite"/>
-          </polygon>
-          <polygon points="0,16 3,0 0,-4 -3,0" fill="#1A2E44" opacity="0.3">
-            <animateTransform attributeName="transform" type="rotate" values="0;5;-3;0" dur="6s" repeatCount="indefinite"/>
-          </polygon>
-          <circle r="3" fill="#1A2E44"/>
+        <g><animateTransform attributeName="transform" type="translate" values="135,242;135,234;135,242" dur="3.6s" repeatCount="indefinite"/>
+          <circle cx="0" cy="0" r="12" fill="#D4622A" filter="drop-shadow(0 3px 8px rgba(212,98,42,0.4))"/>
+          <circle cx="0" cy="0" r="5" fill="white"/>
+          <polygon points="0,12 -5,5 5,5" fill="#D4622A"/>
         </g>
-
-        <!-- Floating location pins -->
-        <g>
-          <!-- Pin 1 -->
-          <g transform="translate(135,240)">
-            <animateTransform attributeName="transform" type="translate" values="135,240;135,234;135,240" dur="3.5s" repeatCount="indefinite"/>
-            <circle r="12" fill="#D4622A" filter="drop-shadow(0 3px 8px rgba(212,98,42,0.4))"/>
-            <circle r="5" fill="white"/>
-            <polygon points="0,12 -5,5 5,5" fill="#D4622A"/>
-          </g>
-          <!-- Pin 2 -->
-          <g transform="translate(280,170)">
-            <animateTransform attributeName="transform" type="translate" values="280,170;280,164;280,170" dur="4.2s" begin="0.8s" repeatCount="indefinite"/>
-            <circle r="10" fill="#1A2E44" filter="drop-shadow(0 3px 8px rgba(26,46,68,0.35))"/>
-            <circle r="4" fill="white"/>
-            <polygon points="0,10 -4,4 4,4" fill="#1A2E44"/>
-          </g>
-          <!-- Pin 3 -->
-          <g transform="translate(60,280)">
-            <animateTransform attributeName="transform" type="translate" values="60,280;60,274;60,280" dur="5s" begin="1.5s" repeatCount="indefinite"/>
-            <circle r="9" fill="#2A5C3A" filter="drop-shadow(0 3px 8px rgba(42,92,58,0.35))"/>
-            <circle r="3.5" fill="white"/>
-            <polygon points="0,9 -3.5,3.5 3.5,3.5" fill="#2A5C3A"/>
-          </g>
+        <g><animateTransform attributeName="transform" type="translate" values="280,172;280,164;280,172" dur="4.3s" begin=".8s" repeatCount="indefinite"/>
+          <circle cx="0" cy="0" r="10" fill="#1A2E44" filter="drop-shadow(0 3px 8px rgba(26,46,68,0.35))"/>
+          <circle cx="0" cy="0" r="4" fill="white"/>
+          <polygon points="0,10 -4,4 4,4" fill="#1A2E44"/>
         </g>
-
-        <!-- Floating badge — "Side Quest benefit" -->
-        <g transform="translate(18, 130)">
-          <animateTransform attributeName="transform" type="translate" values="18,130;18,124;18,130" dur="5s" begin="0.5s" repeatCount="indefinite"/>
-          <rect width="138" height="36" rx="18" fill="white" filter="drop-shadow(0 4px 14px rgba(0,0,0,0.12))"/>
-          <text x="20" y="23" font-size="12" fill="#D4622A" font-family="Inter,sans-serif" font-weight="700">✈ Side Quest benefit</text>
+        <g><animateTransform attributeName="transform" type="translate" values="18,132;18,124;18,132" dur="5s" begin=".5s" repeatCount="indefinite"/>
+          <rect width="148" height="36" rx="18" fill="white" filter="drop-shadow(0 4px 12px rgba(0,0,0,0.1))"/>
+          <text x="20" y="23" font-size="12" fill="#D4622A" font-family="Inter" font-weight="700">✈ Side quest benefit</text>
         </g>
-
-        <!-- Floating badge — payroll -->
-        <g transform="translate(290, 310)">
-          <animateTransform attributeName="transform" type="translate" values="290,310;290,304;290,310" dur="4.5s" begin="1.2s" repeatCount="indefinite"/>
-          <rect width="130" height="36" rx="18" fill="white" filter="drop-shadow(0 4px 14px rgba(0,0,0,0.12))"/>
-          <text x="18" y="23" font-size="12" fill="#1A2E44" font-family="Inter,sans-serif" font-weight="700">💳 Paid via payroll</text>
+        <g><animateTransform attributeName="transform" type="translate" values="288,312;288,304;288,312" dur="4.5s" begin="1.2s" repeatCount="indefinite"/>
+          <rect width="132" height="36" rx="18" fill="white" filter="drop-shadow(0 4px 12px rgba(0,0,0,0.1))"/>
+          <text x="18" y="23" font-size="12" fill="#1A2E44" font-family="Inter" font-weight="700">💳 Paid via payroll</text>
         </g>
       </svg>
-    </div>
-  </div>
-</section>
-
-<!-- ── Problem ────────────────────────────────────────────────────────────── -->
-<section class="section section--alt" id="problem">
-  <div class="wrap">
-    <div class="problem-grid">
-      <div class="problem-text">
-        <div class="section-label">The retention problem</div>
-        <h2>Businesses are losing their best people. Generic perks aren't working.</h2>
-        <p>Global workforce attrition hit 20% in 2024. Salary alone no longer retains talent — employees want experiences, flexibility and purpose. They want to travel, learn new skills, volunteer, work from somewhere new, or simply recharge. But employers have no platform to fund and manage these side quests as a structured benefit.</p>
-        <p>Gym discounts and coffee perks aren't moving the needle. Sabba is the benefit that does — because it funds what people actually care about doing with their time.</p>
+      <!-- Floating UI cards -->
+      <div class="fc fc1">
+        <div class="fc-label">Allowance</div>
+        <div class="fc-val">£1,000</div>
+        <div class="prog-wrap">
+          <div class="prog-labels"><span>Used: £2,000</span><span>67%</span></div>
+          <div class="prog-track"><div class="prog-fill"></div></div>
+        </div>
       </div>
-      <div class="stat-cards">
-        <div class="stat-card">
-          <div class="stat-card-num">20%</div>
-          <div class="stat-card-text">
-            <strong>Global workforce attrition in 2024</strong>
-            <span>1 in 5 employees leaving every year</span>
-          </div>
-        </div>
-        <div class="stat-card">
-          <div class="stat-card-num">42%</div>
-          <div class="stat-card-text">
-            <strong>UK employees actively want side quest benefits</strong>
-            <span>Travel, volunteering, courses and work abroad</span>
-          </div>
-        </div>
-        <div class="stat-card">
-          <div class="stat-card-num">50%</div>
-          <div class="stat-card-text">
-            <strong>UK companies now offer structured side quest leave</strong>
-            <span>Up from 38% in 2022 — infrastructure is the missing piece</span>
-          </div>
-        </div>
+      <div class="fc fc2">
+        <div class="fc-tag">New booking</div>
+        <div class="fc-val">Inca Trail, Peru</div>
+        <div class="fc-sub">Intrepid Travel · £2,850</div>
+        <div class="fc-badge"><div class="fc-badge-dot"></div>HR approved</div>
+      </div>
+      <div class="fc fc3">
+        <div class="fc-label">Sabba Points</div>
+        <div class="fc-val">2,450 pts</div>
+        <div class="fc-sub">= £24.50 discount</div>
+      </div>
+      <div class="fc fc4">
+        <div class="fc-tag">Community</div>
+        <div class="fc-val" style="font-size:13px">3 colleagues also going ✈️</div>
       </div>
     </div>
   </div>
@@ -685,120 +376,35 @@ menu.querySelectorAll('a').forEach(a => {
 <!-- ── How it works ───────────────────────────────────────────────────────── -->
 <section class="section" id="how-it-works">
   <div class="wrap">
-    <div class="section-label">How it works</div>
-    <h2 class="section-heading">One platform. Three parties. Zero admin.</h2>
-    <p class="section-sub">Sabba connects employers, employees and side quest vendors in a single integrated marketplace — from policy to booking to payroll.</p>
-
-    <!-- Animated flow illustration -->
-    <div class="hiw-visual" aria-hidden="true">
-      <svg viewBox="0 0 680 200" xmlns="http://www.w3.org/2000/svg" class="hiw-svg">
-        <!-- Connecting line -->
-        <line x1="140" y1="100" x2="540" y2="100" stroke="#e8e5e1" stroke-width="2" stroke-dasharray="6 4"/>
-
-        <!-- Animated dot travelling the line -->
-        <circle r="5" fill="#D4622A" opacity="0.8">
-          <animateMotion dur="3s" repeatCount="indefinite" begin="0s">
-            <mpath href="#flowpath"/>
-          </animateMotion>
-          <animate attributeName="opacity" values="0;1;1;0" dur="3s" repeatCount="indefinite"/>
-        </circle>
-        <circle r="5" fill="#D4622A" opacity="0.8">
-          <animateMotion dur="3s" repeatCount="indefinite" begin="-1s">
-            <mpath href="#flowpath"/>
-          </animateMotion>
-          <animate attributeName="opacity" values="0;1;1;0" dur="3s" repeatCount="indefinite" begin="-1s"/>
-        </circle>
-        <path id="flowpath" d="M140,100 L540,100" fill="none"/>
-
-        <!-- Employer node -->
-        <g transform="translate(70,100)">
-          <circle r="60" fill="#1A2E44"/>
-          <text x="0" y="-18" text-anchor="middle" font-size="26" fill="white">🏢</text>
-          <text x="0" y="8" text-anchor="middle" font-size="11" font-weight="600" fill="white" font-family="Inter,sans-serif">Employer</text>
-          <text x="0" y="24" text-anchor="middle" font-size="9" fill="rgba(255,255,255,0.6)" font-family="Inter,sans-serif">Subscribes</text>
-          <text x="0" y="36" text-anchor="middle" font-size="9" fill="rgba(255,255,255,0.6)" font-family="Inter,sans-serif">&amp; approves</text>
-        </g>
-
-        <!-- Sabba platform node (centre) -->
-        <g transform="translate(340,100)">
-          <circle r="70" fill="#D4622A"/>
-          <text x="0" y="-20" text-anchor="middle" font-size="28">🧭</text>
-          <text x="0" y="8" text-anchor="middle" font-size="13" font-weight="700" fill="white" font-family="Inter,sans-serif">Sabba</text>
-          <text x="0" y="24" text-anchor="middle" font-size="9" fill="rgba(255,255,255,0.8)" font-family="Inter,sans-serif">Marketplace</text>
-          <text x="0" y="36" text-anchor="middle" font-size="9" fill="rgba(255,255,255,0.8)" font-family="Inter,sans-serif">&amp; payments</text>
-          <animate attributeName="r" values="70;73;70" dur="3s" repeatCount="indefinite" attributeType="XML"/>
-        </g>
-
-        <!-- Employee node -->
-        <g transform="translate(340,100)">
-          <!-- positioned via second group above the platform -->
-        </g>
-
-        <!-- Employee floating above -->
-        <g transform="translate(200,40)">
-          <rect x="-52" y="-28" width="104" height="52" rx="10" fill="white" stroke="#e8e5e1" stroke-width="1" filter="url(#sh2)"/>
-          <text x="0" y="-8" text-anchor="middle" font-size="16">👤</text>
-          <text x="0" y="10" text-anchor="middle" font-size="9" font-weight="600" fill="#1A2E44" font-family="Inter,sans-serif">Employee</text>
-          <text x="0" y="21" text-anchor="middle" font-size="8" fill="#777" font-family="Inter,sans-serif">Books &amp; earns points</text>
-          <animateTransform attributeName="transform" type="translate" values="200,40;200,34;200,40" dur="4s" repeatCount="indefinite"/>
-        </g>
-
-        <!-- Vendor node -->
-        <g transform="translate(610,100)">
-          <circle r="60" fill="#1A2E44"/>
-          <text x="0" y="-18" text-anchor="middle" font-size="26" fill="white">🗺️</text>
-          <text x="0" y="8" text-anchor="middle" font-size="11" font-weight="600" fill="white" font-family="Inter,sans-serif">Vendor</text>
-          <text x="0" y="24" text-anchor="middle" font-size="9" fill="rgba(255,255,255,0.6)" font-family="Inter,sans-serif">Lists packages</text>
-          <text x="0" y="36" text-anchor="middle" font-size="9" fill="rgba(255,255,255,0.6)" font-family="Inter,sans-serif">&amp; gets paid</text>
-        </g>
-
-        <!-- Return path dot (payment) -->
-        <circle r="4" fill="#1A2E44" opacity="0.6">
-          <animateMotion dur="3s" repeatCount="indefinite" begin="-1.5s">
-            <mpath href="#returnpath"/>
-          </animateMotion>
-          <animate attributeName="opacity" values="0;0.7;0.7;0" dur="3s" repeatCount="indefinite" begin="-1.5s"/>
-        </circle>
-        <path id="returnpath" d="M540,108 L140,108" fill="none"/>
-
-        <defs>
-          <filter id="sh2" x="-30%" y="-30%" width="160%" height="160%">
-            <feDropShadow dx="0" dy="2" stdDeviation="4" flood-color="#000" flood-opacity="0.08"/>
-          </filter>
-        </defs>
-      </svg>
+    <div class="reveal">
+      <div class="section-kicker">How it works</div>
+      <h2 class="section-h2">One platform.<br>Three parties. Zero admin.</h2>
+      <p class="section-sub">Sabba connects employers, employees and vendors in a single integrated marketplace — from policy to booking to payroll.</p>
     </div>
-    <div class="hiw-flow" aria-hidden="true">
-      <svg viewBox="0 0 700 100" xmlns="http://www.w3.org/2000/svg" class="flow-svg">
-        <!-- Connecting line -->
+    <!-- Animated flow -->
+    <div class="flow-wrap reveal">
+      <svg class="flow-svg" viewBox="0 0 700 100" xmlns="http://www.w3.org/2000/svg">
         <line x1="120" y1="50" x2="580" y2="50" stroke="#E8E5E1" stroke-width="2" stroke-dasharray="6 4">
           <animate attributeName="stroke-dashoffset" values="0;-20" dur="1.2s" repeatCount="indefinite"/>
         </line>
-        <!-- Node 1 — Employer -->
         <circle cx="120" cy="50" r="32" fill="#1A2E44"/>
-        <text x="120" y="44" text-anchor="middle" font-size="18" fill="white" font-family="Inter,sans-serif">🏢</text>
-        <text x="120" y="60" text-anchor="middle" font-size="9" fill="rgba(255,255,255,0.8)" font-family="Inter,sans-serif" font-weight="600">EMPLOYER</text>
-        <!-- Arrow 1 -->
-        <path d="M 162 50 L 228 50" stroke="#D4622A" stroke-width="2" fill="none" marker-end="url(#arr)"/>
-        <text x="195" y="40" text-anchor="middle" font-size="8.5" fill="#D4622A" font-family="Inter,sans-serif" font-weight="600">SUBSCRIBES</text>
-        <!-- Node 2 — Employee -->
+        <text x="120" y="44" text-anchor="middle" font-size="18" fill="white" font-family="Inter">🏢</text>
+        <text x="120" y="60" text-anchor="middle" font-size="9" fill="rgba(255,255,255,0.8)" font-family="Inter" font-weight="600">EMPLOYER</text>
+        <path d="M162 50L228 50" stroke="#D4622A" stroke-width="2" fill="none" marker-end="url(#arr)"/>
+        <text x="195" y="40" text-anchor="middle" font-size="8.5" fill="#D4622A" font-family="Inter" font-weight="600">SUBSCRIBES</text>
         <circle cx="270" cy="50" r="32" fill="#D4622A"/>
-        <text x="270" y="44" text-anchor="middle" font-size="18" fill="white" font-family="Inter,sans-serif">🧭</text>
-        <text x="270" y="60" text-anchor="middle" font-size="9" fill="rgba(255,255,255,0.9)" font-family="Inter,sans-serif" font-weight="600">EMPLOYEE</text>
-        <!-- Arrow 2 -->
-        <path d="M 312 50 L 378 50" stroke="#D4622A" stroke-width="2" fill="none" marker-end="url(#arr)"/>
-        <text x="345" y="40" text-anchor="middle" font-size="8.5" fill="#D4622A" font-family="Inter,sans-serif" font-weight="600">BOOKS &amp; PAYS</text>
-        <!-- Node 3 — Sabba -->
-        <circle cx="420" cy="50" r="32" fill="#F7F5F2" stroke="#E8E5E1" stroke-width="1.5"/>
-        <text x="420" y="44" text-anchor="middle" font-size="14" fill="#1A2E44" font-family="Inter,sans-serif" font-weight="700">Sabba</text>
-        <text x="420" y="60" text-anchor="middle" font-size="9" fill="#777" font-family="Inter,sans-serif" font-weight="600">PLATFORM</text>
-        <!-- Arrow 3 -->
-        <path d="M 462 50 L 528 50" stroke="#D4622A" stroke-width="2" fill="none" marker-end="url(#arr)"/>
-        <text x="495" y="40" text-anchor="middle" font-size="8.5" fill="#D4622A" font-family="Inter,sans-serif" font-weight="600">LISTS &amp; EARNS</text>
-        <!-- Node 4 — Vendor -->
+        <text x="270" y="44" text-anchor="middle" font-size="18" fill="white" font-family="Inter">🧭</text>
+        <text x="270" y="60" text-anchor="middle" font-size="9" fill="rgba(255,255,255,0.9)" font-family="Inter" font-weight="600">EMPLOYEE</text>
+        <path d="M312 50L378 50" stroke="#D4622A" stroke-width="2" fill="none" marker-end="url(#arr)"/>
+        <text x="345" y="40" text-anchor="middle" font-size="8.5" fill="#D4622A" font-family="Inter" font-weight="600">BOOKS &amp; PAYS</text>
+        <circle cx="420" cy="50" r="32" fill="#FAFAF8" stroke="#E8E5E1" stroke-width="1.5"/>
+        <text x="420" y="44" text-anchor="middle" font-size="14" fill="#1A2E44" font-family="Inter" font-weight="700">Sabba</text>
+        <text x="420" y="60" text-anchor="middle" font-size="9" fill="#777" font-family="Inter" font-weight="600">PLATFORM</text>
+        <path d="M462 50L528 50" stroke="#D4622A" stroke-width="2" fill="none" marker-end="url(#arr)"/>
+        <text x="495" y="40" text-anchor="middle" font-size="8.5" fill="#D4622A" font-family="Inter" font-weight="600">LISTS &amp; EARNS</text>
         <circle cx="570" cy="50" r="32" fill="#2A5C3A"/>
-        <text x="570" y="44" text-anchor="middle" font-size="18" fill="white" font-family="Inter,sans-serif">🗺️</text>
-        <text x="570" y="60" text-anchor="middle" font-size="9" fill="rgba(255,255,255,0.9)" font-family="Inter,sans-serif" font-weight="600">VENDOR</text>
+        <text x="570" y="44" text-anchor="middle" font-size="18" fill="white" font-family="Inter">🗺️</text>
+        <text x="570" y="60" text-anchor="middle" font-size="9" fill="rgba(255,255,255,0.9)" font-family="Inter" font-weight="600">VENDOR</text>
         <defs>
           <marker id="arr" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
             <path d="M0,0 L0,6 L8,3 z" fill="#D4622A"/>
@@ -806,35 +412,34 @@ menu.querySelectorAll('a').forEach(a => {
         </defs>
       </svg>
     </div>
-
-    <div class="three-col">
-      <div class="party-card">
-        <div class="party-card-icon">🏢</div>
-        <div class="party-card-who">Employers</div>
+    <div class="party-row reveal">
+      <div class="party">
+        <div class="party-n">01</div>
+        <div class="party-who"><span class="party-bar"></span>Employers</div>
         <h3>Subscribe &amp; manage</h3>
         <p>Set annual side quest allowances, review and approve bookings in your HR portal, and manage vendor verification — all in one place.</p>
         <ul>
           <li>Live dashboard with real-time booking metrics</li>
-          <li>One-click approval or rejection of bookings</li>
+          <li>One-click booking approval or rejection</li>
           <li>CSV bulk employee import (500 per upload)</li>
           <li>Analytics, messaging and custom email templates</li>
         </ul>
       </div>
-      <div class="party-card">
-        <div class="party-card-icon">🧭</div>
-        <div class="party-card-who">Employees</div>
+      <div class="party party--accent">
+        <div class="party-n">02</div>
+        <div class="party-who"><span class="party-bar"></span>Employees</div>
         <h3>Discover &amp; book</h3>
         <p>Browse a curated marketplace, pick a payroll spread (3, 6 or 12 months), and book side quests within their employer-funded allowance.</p>
         <ul>
-          <li>Side Quest quiz for personalised recommendations</li>
+          <li>Side quest quiz for personalised recommendations</li>
           <li>Interactive 3/6/12-month cost breakdowns</li>
           <li>Sabba Points rewards and redemption</li>
           <li>Community feed with travel matching</li>
         </ul>
       </div>
-      <div class="party-card">
-        <div class="party-card-icon">🗺️</div>
-        <div class="party-card-who">Vendors</div>
+      <div class="party">
+        <div class="party-n">03</div>
+        <div class="party-who"><span class="party-bar"></span>Vendors</div>
         <h3>List &amp; fulfil</h3>
         <p>Reach thousands of employer-funded buyers. Manage bookings, send trip details and track earnings through a dedicated vendor portal.</p>
         <ul>
@@ -848,181 +453,33 @@ menu.querySelectorAll('a').forEach(a => {
   </div>
 </section>
 
-<!-- ── Platform features ──────────────────────────────────────────────────── -->
-<section class="section section--alt" id="platform">
+<!-- ── Platform ────────────────────────────────────────────────────────────── -->
+<section class="section section--white" id="platform">
   <div class="wrap">
-    <div class="section-label">The platform</div>
-    <h2 class="section-heading">Built end-to-end. Live today.</h2>
-    <p class="section-sub">Sabba is a fully deployed, production-grade platform — not a prototype. Every feature below is live at <a href="https://sabba.app" target="_blank" style="color:var(--orange);font-weight:500">sabba.app</a>.</p>
-
-    <!-- Dashboard illustration -->
-    <div class="platform-visual" aria-hidden="true">
-      <svg viewBox="0 0 580 340" xmlns="http://www.w3.org/2000/svg" class="platform-svg">
-        <!-- Browser chrome -->
-        <rect x="0" y="0" width="580" height="340" rx="14" fill="#1A2E44"/>
-        <rect x="0" y="0" width="580" height="36" rx="14" fill="#243D58"/>
-        <rect x="14" y="36" width="580" height="4" fill="#1A2E44"/>
-        <!-- Browser dots -->
-        <circle cx="22" cy="18" r="5" fill="#ff5f57" opacity="0.8"/>
-        <circle cx="38" cy="18" r="5" fill="#febc2e" opacity="0.8"/>
-        <circle cx="54" cy="18" r="5" fill="#28c840" opacity="0.8"/>
-        <!-- URL bar -->
-        <rect x="80" y="10" width="300" height="16" rx="8" fill="rgba(255,255,255,0.08)"/>
-        <text x="230" y="22" text-anchor="middle" font-size="8" fill="rgba(255,255,255,0.4)" font-family="Inter,sans-serif">sabba.app</text>
-
-        <!-- Sidebar -->
-        <rect x="0" y="36" width="130" height="304" fill="#0D1E30" rx="0"/>
-        <rect x="0" y="304" width="130" height="36" rx="0 0 0 14" fill="#0D1E30"/>
-        <!-- Sidebar items -->
-        <rect x="12" y="56" width="106" height="28" rx="7" fill="#D4622A"/>
-        <text x="65" y="74" text-anchor="middle" font-size="9" font-weight="600" fill="white" font-family="Inter,sans-serif">🏠 Home</text>
-        <rect x="12" y="92" width="106" height="24" rx="6" fill="rgba(255,255,255,0.05)"/>
-        <text x="65" y="108" text-anchor="middle" font-size="9" fill="rgba(255,255,255,0.5)" font-family="Inter,sans-serif">🧭 Explore</text>
-        <rect x="12" y="122" width="106" height="24" rx="6" fill="rgba(255,255,255,0.05)"/>
-        <text x="65" y="138" text-anchor="middle" font-size="9" fill="rgba(255,255,255,0.5)" font-family="Inter,sans-serif">📋 Bookings</text>
-        <rect x="12" y="152" width="106" height="24" rx="6" fill="rgba(255,255,255,0.05)"/>
-        <text x="65" y="168" text-anchor="middle" font-size="9" fill="rgba(255,255,255,0.5)" font-family="Inter,sans-serif">🏘 Community</text>
-        <rect x="12" y="182" width="106" height="24" rx="6" fill="rgba(255,255,255,0.05)"/>
-        <text x="65" y="198" text-anchor="middle" font-size="9" fill="rgba(255,255,255,0.5)" font-family="Inter,sans-serif">💰 Allowance</text>
-
-        <!-- Main content area -->
-        <rect x="130" y="36" width="450" height="304" fill="#F7F5F2"/>
-
-        <!-- Top bar -->
-        <rect x="130" y="36" width="450" height="40" fill="white"/>
-        <text x="152" y="62" font-size="13" font-weight="700" fill="#1A2E44" font-family="Inter,sans-serif">Good morning, James 👋</text>
-        <!-- Avatar -->
-        <circle cx="558" cy="56" r="14" fill="#1A2E44"/>
-        <text x="558" y="60" text-anchor="middle" font-size="9" font-weight="600" fill="white" font-family="Inter,sans-serif">JB</text>
-
-        <!-- Allowance card -->
-        <rect x="142" y="88" width="180" height="80" rx="10" fill="#1A2E44"/>
-        <text x="155" y="108" font-size="8" fill="rgba(255,255,255,0.5)" font-family="Inter,sans-serif" letter-spacing="0.5">ALLOWANCE</text>
-        <text x="155" y="128" font-size="18" font-weight="700" fill="white" font-family="Inter,sans-serif">£1,000</text>
-        <text x="155" y="142" font-size="8" fill="rgba(255,255,255,0.4)" font-family="Inter,sans-serif">of £3,000 remaining</text>
-        <!-- Progress bar -->
-        <rect x="155" y="154" width="155" height="4" rx="2" fill="rgba(255,255,255,0.15)"/>
-        <rect x="155" y="154" width="103" height="4" rx="2" fill="#D4622A"/>
-
-        <!-- Points card -->
-        <rect x="334" y="88" width="110" height="80" rx="10" fill="white" stroke="#e8e5e1" stroke-width="1"/>
-        <text x="346" y="110" font-size="8" fill="#777" font-family="Inter,sans-serif">SABBA POINTS</text>
-        <text x="346" y="130" font-size="16" font-weight="700" fill="#D4622A" font-family="Inter,sans-serif">2,450</text>
-        <text x="346" y="148" font-size="8" fill="#777" font-family="Inter,sans-serif">= £24.50 value</text>
-        <!-- Star -->
-        <text x="424" y="110" font-size="14">⭐</text>
-
-        <!-- Level card -->
-        <rect x="456" y="88" width="112" height="80" rx="10" fill="white" stroke="#e8e5e1" stroke-width="1"/>
-        <text x="468" y="110" font-size="8" fill="#777" font-family="Inter,sans-serif">LEVEL</text>
-        <text x="468" y="128" font-size="11" font-weight="700" fill="#1A2E44" font-family="Inter,sans-serif">Side Questr</text>
-        <text x="468" y="144" font-size="8" fill="#777" font-family="Inter,sans-serif">Level 3 of 5</text>
-        <!-- Level bar -->
-        <rect x="468" y="152" width="88" height="4" rx="2" fill="#eee"/>
-        <rect x="468" y="152" width="52" height="4" rx="2" fill="#D4622A"/>
-        <animate attributeName="opacity" values="1;1" dur="1s" repeatCount="indefinite"/>
-
-        <!-- Package cards -->
-        <text x="152" y="188" font-size="9" font-weight="600" fill="#1A2E44" font-family="Inter,sans-serif">Recommended for you</text>
-
-        <!-- Card 1 -->
-        <rect x="142" y="196" width="130" height="118" rx="10" fill="white" stroke="#e8e5e1" stroke-width="1"/>
-        <rect x="142" y="196" width="130" height="52" rx="10 10 0 0" fill="#2A4060"/>
-        <rect x="142" y="228" width="130" height="20" fill="#2A4060"/>
-        <text x="207" y="228" text-anchor="middle" font-size="22">🏔️</text>
-        <text x="154" y="264" font-size="8" font-weight="600" fill="#1A2E44" font-family="Inter,sans-serif">Inca Trail, Peru</text>
-        <text x="154" y="276" font-size="7" fill="#777" font-family="Inter,sans-serif">Intrepid · 14 days</text>
-        <text x="154" y="294" font-size="9" font-weight="700" fill="#D4622A" font-family="Inter,sans-serif">£2,850</text>
-        <rect x="210" y="284" width="52" height="18" rx="6" fill="#D4622A"/>
-        <text x="236" y="296" text-anchor="middle" font-size="7.5" font-weight="600" fill="white" font-family="Inter,sans-serif">Add to cart</text>
-
-        <!-- Card 2 -->
-        <rect x="284" y="196" width="130" height="118" rx="10" fill="white" stroke="#e8e5e1" stroke-width="1"/>
-        <rect x="284" y="196" width="130" height="52" rx="10 10 0 0" fill="#1a3a25"/>
-        <rect x="284" y="228" width="130" height="20" fill="#1a3a25"/>
-        <text x="349" y="228" text-anchor="middle" font-size="22">🌊</text>
-        <text x="296" y="264" font-size="8" font-weight="600" fill="#1A2E44" font-family="Inter,sans-serif">Marine Conservation</text>
-        <text x="296" y="276" font-size="7" fill="#777" font-family="Inter,sans-serif">Blue Ventures · 21 days</text>
-        <text x="296" y="294" font-size="9" font-weight="700" fill="#D4622A" font-family="Inter,sans-serif">£1,800</text>
-        <rect x="352" y="284" width="52" height="18" rx="6" fill="#1A2E44"/>
-        <text x="378" y="296" text-anchor="middle" font-size="7.5" font-weight="600" fill="white" font-family="Inter,sans-serif">Add to cart</text>
-
-        <!-- Card 3 -->
-        <rect x="426" y="196" width="130" height="118" rx="10" fill="white" stroke="#e8e5e1" stroke-width="1"/>
-        <rect x="426" y="196" width="130" height="52" rx="10 10 0 0" fill="#2a1a40"/>
-        <rect x="426" y="228" width="130" height="20" fill="#2a1a40"/>
-        <text x="491" y="228" text-anchor="middle" font-size="22">💻</text>
-        <text x="438" y="264" font-size="8" font-weight="600" fill="#1A2E44" font-family="Inter,sans-serif">Digital Nomad Retreat</text>
-        <text x="438" y="276" font-size="7" fill="#777" font-family="Inter,sans-serif">Selina · 30 days</text>
-        <text x="438" y="294" font-size="9" font-weight="700" fill="#D4622A" font-family="Inter,sans-serif">£3,400</text>
-        <rect x="494" y="284" width="52" height="18" rx="6" fill="#1A2E44"/>
-        <text x="520" y="296" text-anchor="middle" font-size="7.5" font-weight="600" fill="white" font-family="Inter,sans-serif">View more</text>
-
-        <!-- Animated cursor -->
-        <g>
-          <polygon points="0,0 0,18 5,14 8,22 11,21 8,13 14,13" fill="#1A2E44" opacity="0.7"/>
-          <animateTransform attributeName="transform" type="translate"
-            values="360,310; 360,310; 400,290; 438,290; 490,290; 520,290; 520,290"
-            keyTimes="0; 0.1; 0.3; 0.45; 0.6; 0.8; 1"
-            dur="5s" repeatCount="indefinite"/>
-        </g>
-      </svg>
+    <div class="reveal">
+      <div class="section-kicker">The platform</div>
+      <h2 class="section-h2">Built end-to-end.<br>Live today.</h2>
+      <p class="section-sub">A fully deployed, production-grade platform — not a prototype. Every feature below is live at <a href="https://sabba.app" target="_blank" style="color:var(--orange);font-weight:500">sabba.app</a>.</p>
     </div>
-    <div class="features-grid">
-      <div class="feature-item">
-        <div class="feature-icon">🏘️</div>
-        <h4>Community social feed</h4>
-        <p>Employees post about upcoming side quests, like and comment on each other's content. A travel matching algorithm connects employees booking the same package within ±30 days.</p>
-      </div>
-      <div class="feature-item">
-        <div class="feature-icon">🏆</div>
-        <h4>Gamification — Explorer to Legend</h4>
-        <p>Five-level progression system with daily points caps. Employees earn Sabba Points for bookings, posts, comments and likes — redeemable against future bookings (100pts = £1).</p>
-      </div>
-      <div class="feature-item">
-        <div class="feature-icon">📋</div>
-        <h4>My Bookings — tabbed layout</h4>
-        <p>Upcoming, Pending, Past and All tabs with counts. Full booking history, payroll progress bars, HR approval status and one-tap access to booking details.</p>
-      </div>
-      <div class="feature-item">
-        <div class="feature-icon">💳</div>
-        <h4>Payroll-integrated checkout</h4>
-        <p>Employees choose their payroll spread before adding to cart. Sabba Points redemption panel sits above the fold. Stripe card checkout also supported.</p>
-      </div>
-      <div class="feature-item">
-        <div class="feature-icon">📧</div>
-        <h4>Transactional emails via SendGrid</h4>
-        <p>Booking submitted notifications to employee and HR admin. Booking approval emails to employee. In-app notification system throughout.</p>
-      </div>
-      <div class="feature-item">
-        <div class="feature-icon">🔒</div>
-        <h4>Security &amp; compliance</h4>
-        <p>Rate limiting, HSTS, X-Frame-Options, Referrer-Policy. GDPR-compliant privacy policy live at /privacy. Multi-tenant architecture with full data isolation per employer.</p>
-      </div>
-      <div class="feature-item">
-        <div class="feature-icon">⭐</div>
-        <h4>Platinum sponsored listings</h4>
-        <p>Four premium sidebar ad slots in the Community page — two per panel. Separate from marketplace featured slots. A distinct vendor revenue stream managed by Super Admin.</p>
-      </div>
-      <div class="feature-item">
-        <div class="feature-icon">⚡</div>
-        <h4>Performance &amp; UX</h4>
-        <p>RouteProgress bar on every navigation. Skeleton loading screens on Home, Marketplace, Bookings and Allowance. Fully mobile-responsive across all three portals.</p>
-      </div>
+    <div class="feat-grid reveal">
+      <div class="feat"><div class="feat-icon-wrap">🏘️</div><h4>Community social feed</h4><p>Employees post about upcoming side quests, like and comment on each other's content. A travel matching algorithm connects employees booking the same package within ±30 days.</p></div>
+      <div class="feat"><div class="feat-icon-wrap">🏆</div><h4>Gamification — Explorer to Legend</h4><p>Five-level progression system with daily points caps. Earn Sabba Points for bookings, posts, comments and likes — redeemable against future bookings (100pts = £1).</p></div>
+      <div class="feat"><div class="feat-icon-wrap">📋</div><h4>My Bookings — tabbed layout</h4><p>Upcoming, Pending, Past and All tabs with counts. Full booking history, payroll progress bars, HR approval status and one-tap access to booking details.</p></div>
+      <div class="feat"><div class="feat-icon-wrap">💳</div><h4>Payroll-integrated checkout</h4><p>Employees choose their payroll spread before adding to cart. Sabba Points redemption panel sits above the fold. Stripe card checkout also supported.</p></div>
+      <div class="feat"><div class="feat-icon-wrap">📧</div><h4>Transactional emails via SendGrid</h4><p>Booking submitted notifications to employee and HR admin. Booking approval emails to employee. In-app notification system throughout.</p></div>
+      <div class="feat"><div class="feat-icon-wrap">🔒</div><h4>Security &amp; compliance</h4><p>Rate limiting, HSTS, X-Frame-Options, Referrer-Policy. GDPR-compliant privacy policy live at /privacy. Multi-tenant architecture with full data isolation per employer.</p></div>
+      <div class="feat"><div class="feat-icon-wrap">⭐</div><h4>Platinum sponsored listings</h4><p>Four premium sidebar ad slots in the Community page. Separate from marketplace featured slots. A distinct vendor revenue stream managed by Super Admin.</p></div>
+      <div class="feat"><div class="feat-icon-wrap">⚡</div><h4>Performance &amp; UX</h4><p>RouteProgress bar on every navigation. Skeleton loading screens on Home, Marketplace, Bookings and Allowance. Fully mobile-responsive across all three portals.</p></div>
     </div>
-
-    <div style="margin-top:48px">
-      <div class="section-label" style="margin-bottom:16px">Tech stack</div>
-      <div class="tech-pills">
-        <div class="tech-pill">React 18</div>
-        <div class="tech-pill">Node.js / Express</div>
-        <div class="tech-pill">PostgreSQL via Supabase</div>
-        <div class="tech-pill">Stripe</div>
-        <div class="tech-pill">SendGrid</div>
-        <div class="tech-pill">Vercel</div>
-        <div class="tech-pill">JWT Auth</div>
-        <div class="tech-pill">Multi-tenant RBAC</div>
-      </div>
+    <div class="tech-pills reveal">
+      <div class="tech-pill">React 18</div>
+      <div class="tech-pill">Node.js / Express</div>
+      <div class="tech-pill">PostgreSQL via Supabase</div>
+      <div class="tech-pill">Stripe</div>
+      <div class="tech-pill">SendGrid</div>
+      <div class="tech-pill">Vercel</div>
+      <div class="tech-pill">JWT Auth</div>
+      <div class="tech-pill">Multi-tenant RBAC</div>
     </div>
   </div>
 </section>
@@ -1030,286 +487,87 @@ menu.querySelectorAll('a').forEach(a => {
 <!-- ── Categories ─────────────────────────────────────────────────────────── -->
 <section class="section" id="categories">
   <div class="wrap">
-    <div class="section-label">Package categories</div>
-    <h2 class="section-heading">Six categories. One marketplace.</h2>
-    <p class="section-sub">Employers choose which categories to enable. Employees filter and discover side quests that match their interests, duration and budget.</p>
-    <div class="cats-banner" aria-hidden="true">
-      <svg viewBox="0 0 660 90" xmlns="http://www.w3.org/2000/svg" class="cats-svg">
-        <!-- Six animated category bubbles -->
+    <div class="reveal">
+      <div class="section-kicker">Package categories</div>
+      <h2 class="section-h2">Six categories.<br>One marketplace.</h2>
+      <p class="section-sub">Employers choose which categories to enable. Employees filter and discover side quests that match their interests, duration and budget.</p>
+    </div>
+    <!-- Animated category bubbles -->
+    <div class="cats-banner reveal" aria-hidden="true">
+      <svg class="cats-svg" viewBox="0 0 660 90" xmlns="http://www.w3.org/2000/svg">
         <g>
-          <g transform="translate(55,45)">
-            <animateTransform attributeName="transform" type="translate" values="55,45;55,39;55,45" dur="3.8s" repeatCount="indefinite"/>
+          <g transform="translate(55,45)"><animateTransform attributeName="transform" type="translate" values="55,45;55,39;55,45" dur="3.8s" repeatCount="indefinite"/>
             <circle r="30" fill="#1A2E44" filter="drop-shadow(0 4px 12px rgba(26,46,68,0.25))"/>
             <text y="8" text-anchor="middle" font-size="22">✈️</text>
           </g>
-          <g transform="translate(165,45)">
-            <animateTransform attributeName="transform" type="translate" values="165,45;165,39;165,45" dur="4.2s" begin="0.4s" repeatCount="indefinite"/>
+          <g transform="translate(165,45)"><animateTransform attributeName="transform" type="translate" values="165,45;165,39;165,45" dur="4.2s" begin=".4s" repeatCount="indefinite"/>
             <circle r="30" fill="#2A5C3A" filter="drop-shadow(0 4px 12px rgba(42,92,58,0.25))"/>
             <text y="8" text-anchor="middle" font-size="22">🌱</text>
           </g>
-          <g transform="translate(275,45)">
-            <animateTransform attributeName="transform" type="translate" values="275,45;275,39;275,45" dur="3.5s" begin="0.8s" repeatCount="indefinite"/>
+          <g transform="translate(275,45)"><animateTransform attributeName="transform" type="translate" values="275,45;275,39;275,45" dur="3.5s" begin=".8s" repeatCount="indefinite"/>
             <circle r="30" fill="#D4622A" filter="drop-shadow(0 4px 12px rgba(212,98,42,0.25))"/>
             <text y="8" text-anchor="middle" font-size="22">📚</text>
           </g>
-          <g transform="translate(385,45)">
-            <animateTransform attributeName="transform" type="translate" values="385,45;385,39;385,45" dur="4.5s" begin="0.2s" repeatCount="indefinite"/>
+          <g transform="translate(385,45)"><animateTransform attributeName="transform" type="translate" values="385,45;385,39;385,45" dur="4.5s" begin=".2s" repeatCount="indefinite"/>
             <circle r="30" fill="#1A4A7A" filter="drop-shadow(0 4px 12px rgba(26,74,122,0.25))"/>
             <text y="8" text-anchor="middle" font-size="22">💻</text>
           </g>
-          <g transform="translate(495,45)">
-            <animateTransform attributeName="transform" type="translate" values="495,45;495,39;495,45" dur="3.9s" begin="0.6s" repeatCount="indefinite"/>
+          <g transform="translate(495,45)"><animateTransform attributeName="transform" type="translate" values="495,45;495,39;495,45" dur="3.9s" begin=".6s" repeatCount="indefinite"/>
             <circle r="30" fill="#5C3A7A" filter="drop-shadow(0 4px 12px rgba(92,58,122,0.25))"/>
             <text y="8" text-anchor="middle" font-size="22">🏡</text>
           </g>
-          <g transform="translate(605,45)">
-            <animateTransform attributeName="transform" type="translate" values="605,45;605,39;605,45" dur="4.1s" begin="1.0s" repeatCount="indefinite"/>
+          <g transform="translate(605,45)"><animateTransform attributeName="transform" type="translate" values="605,45;605,39;605,45" dur="4.1s" begin="1s" repeatCount="indefinite"/>
             <circle r="30" fill="#1A6A7A" filter="drop-shadow(0 4px 12px rgba(26,106,122,0.25))"/>
             <text y="8" text-anchor="middle" font-size="22">🛫</text>
           </g>
         </g>
       </svg>
     </div>
-    <div class="cats-grid">
-      <div class="cat-card">
-        <div class="cat-icon">✈️</div>
-        <h4>Travel &amp; Side Quest</h4>
-        <p>Trekking, expeditions, safaris, cycling tours, cultural journeys — worldwide destinations across all experience levels.</p>
-      </div>
-      <div class="cat-card">
-        <div class="cat-icon">🌱</div>
-        <h4>Volunteering</h4>
-        <p>Marine conservation, community projects, humanitarian work and skills-based placements with structured outcomes.</p>
-      </div>
-      <div class="cat-card">
-        <div class="cat-icon">📚</div>
-        <h4>Courses &amp; Skills</h4>
-        <p>Language immersion, photography, SCUBA certification, cookery schools and leadership programmes abroad.</p>
-      </div>
-      <div class="cat-card">
-        <div class="cat-icon">💻</div>
-        <h4>Work Abroad</h4>
-        <p>Co-working retreats, digital nomad programmes and workcations — for employers who support remote working.</p>
-      </div>
-      <div class="cat-card">
-        <div class="cat-icon">🏡</div>
-        <h4>Accommodation</h4>
-        <p>Sabbatical-length stays, coliving spaces and serviced apartments — standalone or combined with other categories.</p>
-      </div>
-      <div class="cat-card">
-        <div class="cat-icon">🛫</div>
-        <h4>Airlines &amp; Transfers</h4>
-        <p>Long-haul flights, holiday packages, rail passes and airport transfers — add-on or standalone bookings.</p>
-      </div>
+    <div class="cats-grid reveal">
+      <div class="cat"><div class="cat-icon">✈️</div><h4>Travel &amp; Adventure</h4><p>Trekking, expeditions, safaris, cycling tours, cultural journeys — worldwide destinations across all experience levels.</p></div>
+      <div class="cat"><div class="cat-icon">🌱</div><h4>Volunteering</h4><p>Marine conservation, community projects, humanitarian work and skills-based placements with structured outcomes.</p></div>
+      <div class="cat"><div class="cat-icon">📚</div><h4>Courses &amp; Skills</h4><p>Language immersion, photography, SCUBA certification, cookery schools and leadership programmes abroad.</p></div>
+      <div class="cat"><div class="cat-icon">💻</div><h4>Work Abroad</h4><p>Co-working retreats, digital nomad programmes and workcations — for employers who support remote working.</p></div>
+      <div class="cat"><div class="cat-icon">🏡</div><h4>Accommodation</h4><p>Sabbatical-length stays, coliving spaces and serviced apartments — standalone or combined with other categories.</p></div>
+      <div class="cat"><div class="cat-icon">🛫</div><h4>Airlines &amp; Transfers</h4><p>Long-haul flights, holiday packages, rail passes and airport transfers — add-on or standalone bookings.</p></div>
     </div>
   </div>
 </section>
 
 <!-- ── Traction ────────────────────────────────────────────────────────────── -->
-<section class="section" id="traction">
+<section class="section section--navy" id="traction">
   <div class="wrap">
-    <div class="section-label">Traction</div>
-    <h2 class="section-heading">Built solo. Deployed. Live.</h2>
-    <p class="section-sub">The entire Sabba platform was built end-to-end by the founder — from zero to a fully functioning three-sided marketplace.</p>
-    <div class="traction-visual" aria-hidden="true">
-      <svg viewBox="0 0 700 200" xmlns="http://www.w3.org/2000/svg" class="world-svg">
-        <!-- Simplified continent outlines -->
-        <!-- UK/Europe blob -->
-        <ellipse cx="340" cy="80" rx="28" ry="22" fill="#E8E5E1" opacity="0.6"/>
-        <!-- North America blob -->
-        <ellipse cx="170" cy="85" rx="50" ry="38" fill="#E8E5E1" opacity="0.6"/>
-        <!-- South America -->
-        <ellipse cx="210" cy="140" rx="25" ry="35" fill="#E8E5E1" opacity="0.6"/>
-        <!-- Africa -->
-        <ellipse cx="350" cy="125" rx="28" ry="42" fill="#E8E5E1" opacity="0.6"/>
-        <!-- Asia -->
-        <ellipse cx="480" cy="80" rx="65" ry="40" fill="#E8E5E1" opacity="0.6"/>
-        <!-- Australia -->
-        <ellipse cx="545" cy="148" rx="32" ry="22" fill="#E8E5E1" opacity="0.6"/>
-
-        <!-- Animated pulse dots at key locations -->
-        <!-- London -->
-        <circle cx="336" cy="72" r="5" fill="#D4622A">
-          <animate attributeName="r" values="5;9;5" dur="2.5s" repeatCount="indefinite"/>
-          <animate attributeName="opacity" values="1;0.3;1" dur="2.5s" repeatCount="indefinite"/>
-        </circle>
-        <circle cx="336" cy="72" r="3" fill="#D4622A"/>
-
-        <!-- New York -->
-        <circle cx="180" cy="80" r="5" fill="#1A2E44">
-          <animate attributeName="r" values="5;9;5" dur="2.5s" begin="0.6s" repeatCount="indefinite"/>
-          <animate attributeName="opacity" values="1;0.3;1" dur="2.5s" begin="0.6s" repeatCount="indefinite"/>
-        </circle>
-        <circle cx="180" cy="80" r="3" fill="#1A2E44"/>
-
-        <!-- Berlin -->
-        <circle cx="350" cy="70" r="4" fill="#2A5C3A">
-          <animate attributeName="r" values="4;8;4" dur="2.5s" begin="1.0s" repeatCount="indefinite"/>
-          <animate attributeName="opacity" values="1;0.3;1" dur="2.5s" begin="1.0s" repeatCount="indefinite"/>
-        </circle>
-        <circle cx="350" cy="70" r="2.5" fill="#2A5C3A"/>
-
-        <!-- Sydney -->
-        <circle cx="548" cy="148" r="4" fill="#D4622A">
-          <animate attributeName="r" values="4;8;4" dur="2.5s" begin="1.4s" repeatCount="indefinite"/>
-          <animate attributeName="opacity" values="1;0.3;1" dur="2.5s" begin="1.4s" repeatCount="indefinite"/>
-        </circle>
-        <circle cx="548" cy="148" r="2.5" fill="#D4622A"/>
-
-        <!-- Singapore -->
-        <circle cx="502" cy="118" r="4" fill="#1A2E44">
-          <animate attributeName="r" values="4;8;4" dur="2.5s" begin="1.8s" repeatCount="indefinite"/>
-          <animate attributeName="opacity" values="1;0.3;1" dur="2.5s" begin="1.8s" repeatCount="indefinite"/>
-        </circle>
-        <circle cx="502" cy="118" r="2.5" fill="#1A2E44"/>
-
-        <!-- Animated connection lines between dots -->
-        <line x1="336" y1="72" x2="180" y2="80" stroke="#D4622A" stroke-width="1" opacity="0.2" stroke-dasharray="4 3">
-          <animate attributeName="opacity" values="0.2;0.5;0.2" dur="3s" repeatCount="indefinite"/>
-        </line>
-        <line x1="336" y1="72" x2="350" y2="70" stroke="#1A2E44" stroke-width="1" opacity="0.2" stroke-dasharray="4 3">
-          <animate attributeName="opacity" values="0.2;0.5;0.2" dur="3s" begin="0.5s" repeatCount="indefinite"/>
-        </line>
-        <line x1="336" y1="72" x2="502" y2="118" stroke="#D4622A" stroke-width="1" opacity="0.15" stroke-dasharray="4 3">
-          <animate attributeName="opacity" values="0.15;0.4;0.15" dur="3s" begin="1s" repeatCount="indefinite"/>
-        </line>
-        <line x1="502" y1="118" x2="548" y2="148" stroke="#2A5C3A" stroke-width="1" opacity="0.15" stroke-dasharray="4 3">
-          <animate attributeName="opacity" values="0.15;0.4;0.15" dur="3s" begin="1.5s" repeatCount="indefinite"/>
-        </line>
-
-        <!-- "UK-focused" label -->
-        <rect x="296" y="48" width="82" height="18" rx="9" fill="#D4622A"/>
-        <text x="337" y="61" text-anchor="middle" font-size="9" fill="white" font-family="Inter,sans-serif" font-weight="700">UK-first platform</text>
-      </svg>
+    <div class="reveal">
+      <div class="section-kicker section-kicker--light">Traction</div>
+      <h2 class="section-h2" style="color:#fff;margin-bottom:32px">Built solo. Deployed. Live.</h2>
     </div>
-    <div class="traction-grid">
-      <div class="traction-item">
-        <div class="traction-num">4</div>
-        <div class="traction-label">Full portals built</div>
-        <div class="traction-sub">Employee · HR Admin · Vendor · Super Admin</div>
-      </div>
-      <div class="traction-item">
-        <div class="traction-num">6</div>
-        <div class="traction-label">Package categories</div>
-        <div class="traction-sub">Travel · Volunteering · Courses · Work Abroad · Accommodation · Airlines</div>
-      </div>
-      <div class="traction-item">
-        <div class="traction-num">∞</div>
-        <div class="traction-label">Employer capacity</div>
-        <div class="traction-sub">Multi-tenant architecture — unlimited clients, full data isolation</div>
-      </div>
-      <div class="traction-item">
-        <div class="traction-num">Live</div>
-        <div class="traction-label">Platform status</div>
-        <div class="traction-sub">sabba.app — deployed and functional today</div>
-      </div>
+    
+    <div class="traction-grid reveal">
+      <div class="traction-item"><div class="traction-num">4</div><div class="traction-label">Full portals built</div><div class="traction-sub">Employee · HR Admin · Vendor · Super Admin</div></div>
+      <div class="traction-item"><div class="traction-num">6</div><div class="traction-label">Package categories</div><div class="traction-sub">Travel · Volunteering · Courses · Work Abroad · Accommodation · Airlines</div></div>
+      <div class="traction-item"><div class="traction-num">∞</div><div class="traction-label">Employer capacity</div><div class="traction-sub">Multi-tenant architecture — unlimited clients, full data isolation</div></div>
+      <div class="traction-item"><div class="traction-num">Live</div><div class="traction-label">Platform status</div><div class="traction-sub">sabba.app — deployed and functional today</div></div>
     </div>
   </div>
 </section>
 
 <!-- ── Contact ────────────────────────────────────────────────────────────── -->
-<section class="section section--alt" id="contact">
-  <div class="wrap" style="text-align:center;max-width:640px;margin:0 auto">
-
-    <div class="contact-visual" aria-hidden="true">
-      <svg viewBox="0 0 600 180" xmlns="http://www.w3.org/2000/svg" class="contact-svg">
-        <!-- Sky -->
-        <rect width="600" height="180" fill="#F7F5F2" rx="14"/>
-
-        <!-- Mountains back -->
-        <polygon points="0,120 80,50 160,120" fill="#D4D0CB"/>
-        <polygon points="60,120 160,40 260,120" fill="#C8C4BE"/>
-        <polygon points="160,120 280,30 400,120" fill="#BDBAB4"/>
-        <polygon points="300,120 420,55 540,120" fill="#C8C4BE"/>
-        <polygon points="430,120 520,60 610,120" fill="#D4D0CB"/>
-
-        <!-- Snow caps -->
-        <polygon points="80,50 70,70 90,70" fill="white" opacity="0.8"/>
-        <polygon points="160,40 148,65 172,65" fill="white" opacity="0.8"/>
-        <polygon points="280,30 266,58 294,58" fill="white" opacity="0.85"/>
-        <polygon points="420,55 410,75 430,75" fill="white" opacity="0.7"/>
-        <polygon points="520,60 510,80 530,80" fill="white" opacity="0.7"/>
-
-        <!-- Ground -->
-        <rect x="0" y="118" width="600" height="62" fill="#1A2E44" rx="0 0 14 14"/>
-
-        <!-- Path/road -->
-        <path d="M280,180 Q290,148 300,118" stroke="rgba(255,255,255,0.15)" stroke-width="8" fill="none"/>
-
-        <!-- Trees -->
-        <g transform="translate(60,118)">
-          <rect x="-3" y="0" width="6" height="18" fill="#0D1E30"/>
-          <polygon points="0,-28 -12,0 12,0" fill="#1a4a2a"/>
-          <polygon points="0,-42 -9,-14 9,-14" fill="#1e5430"/>
-        </g>
-        <g transform="translate(90,118)">
-          <rect x="-2.5" y="0" width="5" height="14" fill="#0D1E30"/>
-          <polygon points="0,-22 -9,0 9,0" fill="#1a4a2a"/>
-          <polygon points="0,-32 -7,-10 7,-10" fill="#1e5430"/>
-        </g>
-        <g transform="translate(500,118)">
-          <rect x="-3" y="0" width="6" height="18" fill="#0D1E30"/>
-          <polygon points="0,-28 -12,0 12,0" fill="#1a4a2a"/>
-          <polygon points="0,-42 -9,-14 9,-14" fill="#1e5430"/>
-        </g>
-        <g transform="translate(530,118)">
-          <rect x="-2.5" y="0" width="5" height="14" fill="#0D1E30"/>
-          <polygon points="0,-22 -9,0 9,0" fill="#1a4a2a"/>
-        </g>
-
-        <!-- Hiker figure -->
-        <g>
-          <animateTransform attributeName="transform" type="translate"
-            values="120,0; 280,0; 280,0" keyTimes="0;0.6;1" dur="8s" repeatCount="indefinite"/>
-          <!-- Body -->
-          <circle cx="0" cy="92" r="7" fill="#D4622A"/>
-          <rect x="-5" y="99" width="10" height="16" rx="3" fill="#1A2E44"/>
-          <!-- Legs walking -->
-          <g>
-            <line x1="-3" y1="115" x2="-6" y2="128" stroke="#1A2E44" stroke-width="3" stroke-linecap="round">
-              <animate attributeName="x2" values="-6;-2;-6" dur="0.6s" repeatCount="indefinite"/>
-              <animate attributeName="y2" values="128;126;128" dur="0.6s" repeatCount="indefinite"/>
-            </line>
-            <line x1="3" y1="115" x2="6" y2="128" stroke="#1A2E44" stroke-width="3" stroke-linecap="round">
-              <animate attributeName="x2" values="6;2;6" dur="0.6s" repeatCount="indefinite" begin="-0.3s"/>
-              <animate attributeName="y2" values="128;126;128" dur="0.6s" repeatCount="indefinite" begin="-0.3s"/>
-            </line>
-          </g>
-          <!-- Backpack -->
-          <rect x="4" y="100" width="7" height="10" rx="2" fill="#D4622A" opacity="0.7"/>
-          <!-- Walking stick -->
-          <line x1="-7" y1="105" x2="-10" y2="128" stroke="#D4622A" stroke-width="1.5" stroke-linecap="round"/>
-        </g>
-
-        <!-- Stars/sparkles in sky -->
-        <g opacity="0.4">
-          <circle cx="150" cy="30" r="1.5" fill="#1A2E44">
-            <animate attributeName="opacity" values="0.4;1;0.4" dur="2s" repeatCount="indefinite"/>
-          </circle>
-          <circle cx="350" cy="20" r="1.5" fill="#1A2E44">
-            <animate attributeName="opacity" values="0.4;1;0.4" dur="2.8s" repeatCount="indefinite" begin="-1s"/>
-          </circle>
-          <circle cx="480" cy="35" r="1" fill="#1A2E44">
-            <animate attributeName="opacity" values="0.4;1;0.4" dur="1.8s" repeatCount="indefinite" begin="-0.5s"/>
-          </circle>
-          <circle cx="220" cy="15" r="1" fill="#1A2E44">
-            <animate attributeName="opacity" values="0.4;1;0.4" dur="3s" repeatCount="indefinite" begin="-2s"/>
-          </circle>
-        </g>
-
-        <!-- Sun -->
-        <circle cx="450" cy="50" r="18" fill="#D4622A" opacity="0.25"/>
-        <circle cx="450" cy="50" r="12" fill="#D4622A" opacity="0.4"/>
-        <circle cx="450" cy="50" r="7" fill="#D4622A" opacity="0.7"/>
-      </svg>
-    </div>
-    <div class="section-label">Contact us</div>
-    <h2 class="section-heading">Get in touch</h2>
-    <p style="font-size:17px;color:var(--mid);line-height:1.65;margin-bottom:40px">Whether you're an employer looking to offer side quest benefits, or a vendor wanting to list packages on the marketplace — we'd love to hear from you.</p>
-    <a href="mailto:hello@sabbaplatform.com" class="btn-primary" style="display:inline-flex;font-size:16px;padding:16px 36px">
-      hello@sabbaplatform.com
-    </a>
-    <p style="font-size:13px;color:var(--muted);margin-top:20px">We typically respond within one business day.</p>
+<section class="section" id="contact">
+  <div class="wrap">
+    <div class="contact-wrap reveal"><div class="contact-inner">
+      <div class="contact-left">
+        <div class="section-kicker">Contact us</div>
+        <h2 class="section-h2">Let's talk.</h2>
+        <p class="section-sub" style="margin-bottom:0">Whether you're an employer looking to offer side quest benefits, or a vendor wanting to list packages on the marketplace — we'd love to hear from you.</p>
+      </div>
+      <div class="contact-right">
+        <a href="mailto:hello@sabbaplatform.com" class="contact-email">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M2 7l10 7 10-7"/></svg>
+          hello@sabbaplatform.com
+        </a>
+        <p class="contact-note">We typically respond within one business day.</p>
+      </div>
+    </div></div>
   </div>
 </section>
 
@@ -1323,10 +581,16 @@ menu.querySelectorAll('a').forEach(a => {
         <a href="#" onclick="return false;">FAQ</a>
         <a href="https://sabba.app/privacy" target="_blank">Privacy</a>
       </div>
-      <span style="font-size:12px">© 2026 Sabba Platform Ltd</span>
+      <span class="footer-copy">© 2026 Sabba Platform Ltd</span>
     </div>
   </div>
 </footer>
+
+<script>
+/* Scroll reveal */
+const obs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible')})},{threshold:0.08});
+document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+</script>
 
 </body>
 </html>
