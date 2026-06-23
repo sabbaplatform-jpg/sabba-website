@@ -213,6 +213,99 @@ footer{background:rgba(17,17,17,0.97);padding:40px 0;border-top:1px solid rgba(2
   .hero-left{padding-bottom:56px}
 }
 @media(prefers-reduced-motion:reduce){*{animation:none !important;transition:none !important}}
+
+/* ── Mockup UI components ─────────────────────────────────────────────── */
+.ui-row{display:grid;grid-template-columns:1fr 1fr;gap:32px;align-items:start;margin-top:40px}
+.ui-row--reverse{direction:rtl}.ui-row--reverse>*{direction:ltr}
+.ui-copy{display:flex;flex-direction:column;justify-content:center}
+
+/* Phone/screen shell */
+.ui-shell{background:var(--glass);backdrop-filter:var(--glass-blur);-webkit-backdrop-filter:var(--glass-blur);border:1px solid var(--glass-border);border-radius:20px;overflow:hidden;box-shadow:0 24px 64px rgba(31,38,135,0.14);animation:floatUI 6s ease-in-out infinite}
+@keyframes floatUI{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+
+/* Inner screen chrome */
+.ui-chrome{background:#1A2E44;padding:10px 14px 8px;display:flex;align-items:center;justify-content:space-between}
+.ui-chrome-dot{display:flex;gap:4px}
+.ui-chrome-dot span{width:7px;height:7px;border-radius:50%;background:rgba(255,255,255,0.2)}
+.ui-chrome-url{font-size:9px;color:rgba(255,255,255,0.4);font-family:var(--body)}
+
+/* UI card inside shell */
+.ui-inner{padding:14px;background:#fff;display:flex;flex-direction:column;gap:10px}
+.ui-section-title{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:#999;margin-bottom:2px}
+
+/* HR approval card */
+.ui-approval{background:#F7F8FA;border-radius:10px;padding:12px}
+.ui-approval-row{display:flex;align-items:center;justify-content:space-between;margin-bottom:8px}
+.ui-approval-name{font-size:12px;font-weight:600;color:#1A2E44}
+.ui-approval-pkg{font-size:10px;color:#888}
+.ui-approval-amt{font-size:13px;font-weight:700;color:#1A2E44}
+.ui-btn-approve{background:#D4622A;color:#fff;font-size:9px;font-weight:700;padding:5px 10px;border-radius:20px;border:none;cursor:pointer;animation:btnPulse 2.5s ease-in-out infinite}
+@keyframes btnPulse{0%,100%{box-shadow:0 0 0 0 rgba(212,98,42,0.4)}70%{box-shadow:0 0 0 8px rgba(212,98,42,0)}}
+.ui-btn-reject{background:#F1EFF0;color:#888;font-size:9px;font-weight:600;padding:5px 10px;border-radius:20px;border:none;cursor:pointer;margin-left:5px}
+
+/* Status badge */
+.ui-badge{display:inline-flex;align-items:center;gap:4px;padding:3px 8px;border-radius:20px;font-size:9px;font-weight:700}
+.ui-badge--amber{background:#FEF0DB;color:#92400E}
+.ui-badge--green{background:#D1FAE5;color:#065F46}
+.ui-badge--orange{background:#FEE5D9;color:#C44D24}
+
+/* Metric tiles */
+.ui-metrics{display:grid;grid-template-columns:repeat(3,1fr);gap:6px}
+.ui-metric{background:#fff;border:1px solid #F0EEF0;border-radius:8px;padding:8px;text-align:center}
+.ui-metric-n{font-size:16px;font-weight:700;color:#1A2E44}
+.ui-metric-l{font-size:8px;color:#aaa;margin-top:2px}
+
+/* Marketplace card */
+.ui-pkg{background:#F7F8FA;border-radius:10px;overflow:hidden}
+.ui-pkg-img{height:55px;display:flex;align-items:center;justify-content:center;font-size:24px}
+.ui-pkg-body{padding:8px 10px}
+.ui-pkg-name{font-size:11px;font-weight:600;color:#1A2E44;margin-bottom:2px}
+.ui-pkg-vendor{font-size:9px;color:#aaa;margin-bottom:6px}
+.ui-pkg-row{display:flex;align-items:center;justify-content:space-between}
+.ui-pkg-price{font-size:12px;font-weight:700;color:#1A2E44}
+.ui-pkg-mo{font-size:8px;color:#aaa}
+.ui-add{background:#D4622A;color:#fff;font-size:8px;font-weight:700;padding:4px 8px;border-radius:12px;border:none}
+
+/* Spread selector */
+.ui-spread{display:flex;gap:4px}
+.ui-spread-opt{flex:1;padding:5px 4px;border-radius:7px;text-align:center;background:#F7F8FA;border:1px solid #eee;font-size:9px;color:#888}
+.ui-spread-opt.active{background:#FEE5D9;border-color:#D4622A;color:#D4622A;font-weight:700}
+
+/* Earnings chart bars */
+.ui-bars{display:flex;align-items:flex-end;gap:5px;height:55px;padding:0 4px}
+.ui-bar{flex:1;border-radius:4px 4px 0 0;animation:growBar 1.2s ease both}
+@keyframes growBar{from{height:0}to{height:var(--h)}}
+
+/* Progress bar */
+.ui-prog-track{height:5px;background:#eee;border-radius:3px;overflow:hidden;margin-top:4px}
+.ui-prog-fill{height:100%;border-radius:3px;background:linear-gradient(90deg,#D4622A,#e88050);animation:growProg 1.5s ease .3s both}
+@keyframes growProg{from{width:0}}
+
+/* Points pill inside UI */
+.ui-points{display:flex;align-items:center;gap:6px;background:#FEF0DB;border-radius:8px;padding:7px 10px}
+.ui-points-star{font-size:14px}
+.ui-points-val{font-size:13px;font-weight:700;color:#92400E}
+.ui-points-lbl{font-size:9px;color:#B45309}
+
+/* Notification row */
+.ui-notif{display:flex;align-items:center;gap:8px;padding:7px 0;border-bottom:1px solid #F5F5F5}
+.ui-notif:last-child{border-bottom:none}
+.ui-notif-icon{width:28px;height:28px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:13px;flex-shrink:0}
+.ui-notif-text{font-size:10px;color:#444;line-height:1.4}
+.ui-notif-time{font-size:9px;color:#bbb;margin-left:auto;flex-shrink:0}
+
+/* Vendor earnings card */
+.ui-earn-row{display:flex;justify-content:space-between;align-items:center;padding:6px 0;border-bottom:1px solid #F5F5F5}
+.ui-earn-row:last-child{border-bottom:none}
+.ui-earn-label{font-size:10px;color:#666}
+.ui-earn-val{font-size:11px;font-weight:700;color:#1A2E44}
+.ui-earn-green{color:#065F46}
+
+@media(max-width:900px){.ui-row{grid-template-columns:1fr}.ui-row--reverse{direction:ltr}}
+
+.party-list{list-style:none;display:flex;flex-direction:column;gap:8px;margin-top:4px}
+.party-list li{font-size:13px;color:var(--mid);padding-left:16px;position:relative}
+.party-list li::before{content:'→';position:absolute;left:0;color:var(--orange);font-size:12px}
 </style>
 </head>
 <body>
@@ -412,42 +505,163 @@ menu.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{btn.classL
         </defs>
       </svg>
     </div>
-    <div class="party-row reveal">
-      <div class="party">
+    <!-- 01 Employers -->
+    <div class="ui-row reveal">
+      <div class="ui-copy">
         <div class="party-n">01</div>
         <div class="party-who"><span class="party-bar"></span>Employers</div>
-        <h3>Subscribe &amp; manage</h3>
-        <p>Set annual side quest allowances, review and approve bookings in your HR portal, and manage vendor verification — all in one place.</p>
-        <ul>
+        <h3 style="font-size:20px;font-weight:600;margin-bottom:10px;color:var(--dark)">Subscribe &amp; manage</h3>
+        <p style="font-size:14px;color:#666;line-height:1.7;margin-bottom:16px">Set annual side quest allowances, review and approve bookings in your HR portal, and manage vendor verification — all in one place.</p>
+        <ul class="party-list">
           <li>Live dashboard with real-time booking metrics</li>
           <li>One-click booking approval or rejection</li>
           <li>CSV bulk employee import (500 per upload)</li>
           <li>Analytics, messaging and custom email templates</li>
         </ul>
       </div>
-      <div class="party party--accent">
+      <!-- HR portal mockup -->
+      <div class="ui-shell" style="animation-delay:0s">
+        <div class="ui-chrome">
+          <div class="ui-chrome-dot"><span></span><span></span><span></span></div>
+          <div class="ui-chrome-url">sabba.app/hr</div>
+        </div>
+        <div class="ui-inner">
+          <div class="ui-section-title">Dashboard</div>
+          <div class="ui-metrics">
+            <div class="ui-metric"><div class="ui-metric-n">142</div><div class="ui-metric-l">Employees</div></div>
+            <div class="ui-metric"><div class="ui-metric-n" style="color:#D4622A">8</div><div class="ui-metric-l">Pending</div></div>
+            <div class="ui-metric"><div class="ui-metric-n" style="color:#065F46">24</div><div class="ui-metric-l">Approved</div></div>
+          </div>
+          <div class="ui-section-title" style="margin-top:4px">Booking requests</div>
+          <div class="ui-approval">
+            <div class="ui-approval-row">
+              <div><div class="ui-approval-name">James B.</div><div class="ui-approval-pkg">Inca Trail, Peru · 14 days</div></div>
+              <div class="ui-approval-amt">£2,850</div>
+            </div>
+            <div style="display:flex;align-items:center;justify-content:space-between">
+              <span class="ui-badge ui-badge--amber">⏳ Pending approval</span>
+              <div><button class="ui-btn-approve">✓ Approve</button><button class="ui-btn-reject">✗</button></div>
+            </div>
+          </div>
+          <div class="ui-approval" style="opacity:.55">
+            <div class="ui-approval-row">
+              <div><div class="ui-approval-name">Sarah L.</div><div class="ui-approval-pkg">Sailing Croatia · 7 days</div></div>
+              <div class="ui-approval-amt">£1,650</div>
+            </div>
+            <span class="ui-badge ui-badge--green">✓ Approved</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 02 Employees -->
+    <div class="ui-row ui-row--reverse reveal" style="margin-top:48px">
+      <div class="ui-copy">
         <div class="party-n">02</div>
         <div class="party-who"><span class="party-bar"></span>Employees</div>
-        <h3>Discover &amp; book</h3>
-        <p>Browse a curated marketplace, pick a payroll spread (3, 6 or 12 months), and book side quests within their employer-funded allowance.</p>
-        <ul>
+        <h3 style="font-size:20px;font-weight:600;margin-bottom:10px;color:var(--dark)">Discover &amp; book</h3>
+        <p style="font-size:14px;color:#666;line-height:1.7;margin-bottom:16px">Browse a curated marketplace, pick a payroll spread (3, 6 or 12 months), and book side quests within your employer-funded allowance.</p>
+        <ul class="party-list">
           <li>Side quest quiz for personalised recommendations</li>
           <li>Interactive 3/6/12-month cost breakdowns</li>
           <li>Sabba Points rewards and redemption</li>
           <li>Community feed with travel matching</li>
         </ul>
       </div>
-      <div class="party">
+      <!-- Employee marketplace mockup -->
+      <div class="ui-shell" style="animation-delay:.4s;animation-duration:7s">
+        <div class="ui-chrome">
+          <div class="ui-chrome-dot"><span></span><span></span><span></span></div>
+          <div class="ui-chrome-url">sabba.app/marketplace</div>
+        </div>
+        <div class="ui-inner">
+          <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:4px">
+            <div class="ui-section-title">Marketplace</div>
+            <div style="display:flex;gap:4px">
+              <span style="background:#FEE5D9;color:#D4622A;font-size:8px;font-weight:700;padding:2px 7px;border-radius:10px">Travel</span>
+              <span style="background:#F0F0F0;color:#888;font-size:8px;padding:2px 7px;border-radius:10px">All</span>
+            </div>
+          </div>
+          <div class="ui-points">
+            <div class="ui-points-star">⭐</div>
+            <div><div class="ui-points-val">2,450 pts</div><div class="ui-points-lbl">= £24.50 to redeem</div></div>
+          </div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:7px;margin-top:4px">
+            <div class="ui-pkg">
+              <div class="ui-pkg-img" style="background:#EAF3DE">🏔️</div>
+              <div class="ui-pkg-body">
+                <div class="ui-pkg-name">Inca Trail, Peru</div>
+                <div class="ui-pkg-vendor">Intrepid · 14 days</div>
+                <div class="ui-pkg-row"><div><div class="ui-pkg-price">£2,850</div><div class="ui-pkg-mo">£238/mo</div></div><button class="ui-add">Add</button></div>
+              </div>
+            </div>
+            <div class="ui-pkg">
+              <div class="ui-pkg-img" style="background:#E1F5EE">🌊</div>
+              <div class="ui-pkg-body">
+                <div class="ui-pkg-name">Marine Conservation</div>
+                <div class="ui-pkg-vendor">Blue Ventures · 21d</div>
+                <div class="ui-pkg-row"><div><div class="ui-pkg-price">£1,800</div><div class="ui-pkg-mo">£150/mo</div></div><button class="ui-add">Add</button></div>
+              </div>
+            </div>
+          </div>
+          <div style="margin-top:6px">
+            <div class="ui-section-title">Choose payroll spread</div>
+            <div class="ui-spread">
+              <div class="ui-spread-opt">3 mo<br><strong>£950</strong></div>
+              <div class="ui-spread-opt active">6 mo<br><strong>£475</strong></div>
+              <div class="ui-spread-opt">12 mo<br><strong>£238</strong></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 03 Vendors -->
+    <div class="ui-row reveal" style="margin-top:48px">
+      <div class="ui-copy">
         <div class="party-n">03</div>
         <div class="party-who"><span class="party-bar"></span>Vendors</div>
-        <h3>List &amp; fulfil</h3>
-        <p>Reach thousands of employer-funded buyers. Manage bookings, send trip details and track earnings through a dedicated vendor portal.</p>
-        <ul>
+        <h3 style="font-size:20px;font-weight:600;margin-bottom:10px;color:var(--dark)">List &amp; fulfil</h3>
+        <p style="font-size:14px;color:#666;line-height:1.7;margin-bottom:16px">Reach thousands of employer-funded buyers. Manage bookings, send trip details and track earnings through a dedicated vendor portal.</p>
+        <ul class="party-list">
           <li>Package management with drag-and-drop images</li>
           <li>Booking pipeline with HR approval integration</li>
           <li>Earnings dashboard with commission tracking</li>
           <li>8–12% commission — paid by Sabba, not consumers</li>
         </ul>
+      </div>
+      <!-- Vendor earnings mockup -->
+      <div class="ui-shell" style="animation-delay:.8s;animation-duration:5.5s">
+        <div class="ui-chrome">
+          <div class="ui-chrome-dot"><span></span><span></span><span></span></div>
+          <div class="ui-chrome-url">sabba.app/vendor</div>
+        </div>
+        <div class="ui-inner">
+          <div class="ui-section-title">Earnings — June 2026</div>
+          <div class="ui-bars">
+            <div class="ui-bar" style="--h:30%;height:30%;background:#E8E5E1"></div>
+            <div class="ui-bar" style="--h:50%;height:50%;background:#E8E5E1"></div>
+            <div class="ui-bar" style="--h:40%;height:40%;background:#E8E5E1"></div>
+            <div class="ui-bar" style="--h:65%;height:65%;background:#E8E5E1"></div>
+            <div class="ui-bar" style="--h:55%;height:55%;background:#E8E5E1"></div>
+            <div class="ui-bar" style="--h:80%;height:80%;background:#D4622A"></div>
+          </div>
+          <div style="display:flex;justify-content:space-between;font-size:8px;color:#bbb;margin-bottom:8px;padding:0 4px"><span>Jan</span><span>Feb</span><span>Mar</span><span>Apr</span><span>May</span><span>Jun</span></div>
+          <div class="ui-earn-row"><div class="ui-earn-label">Gross revenue</div><div class="ui-earn-val">£18,450</div></div>
+          <div class="ui-earn-row"><div class="ui-earn-label">Commission (10%)</div><div class="ui-earn-val" style="color:#888">−£1,845</div></div>
+          <div class="ui-earn-row"><div class="ui-earn-label">Net payout</div><div class="ui-earn-val ui-earn-green">£16,605</div></div>
+          <div class="ui-section-title" style="margin-top:6px">New bookings</div>
+          <div class="ui-notif">
+            <div class="ui-notif-icon" style="background:#D1FAE5">✓</div>
+            <div class="ui-notif-text"><strong>Inca Trail confirmed</strong><br>James B. · £2,850</div>
+            <div class="ui-notif-time">2m ago</div>
+          </div>
+          <div class="ui-notif">
+            <div class="ui-notif-icon" style="background:#FEE5D9">📦</div>
+            <div class="ui-notif-text"><strong>New booking request</strong><br>Sarah L. · Sailing Croatia</div>
+            <div class="ui-notif-time">1h ago</div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -456,10 +670,50 @@ menu.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{btn.classL
 <!-- ── Platform ────────────────────────────────────────────────────────────── -->
 <section class="section section--white" id="platform">
   <div class="wrap">
-    <div class="reveal">
-      <div class="section-kicker">The platform</div>
-      <h2 class="section-h2">Built end-to-end.<br>Live today.</h2>
-      <p class="section-sub">A fully deployed, production-grade platform — not a prototype. Every feature below is live at <a href="https://sabba.app" target="_blank" style="color:var(--orange);font-weight:500">sabba.app</a>.</p>
+    <div class="ui-row reveal" style="margin-bottom:48px">
+      <div class="ui-copy">
+        <div class="section-kicker">The platform</div>
+        <h2 class="section-h2">Built end-to-end.<br>Live today.</h2>
+        <p style="font-size:17px;color:var(--mid);line-height:1.7">A fully deployed, production-grade platform — not a prototype. Every feature below is live at <a href="https://sabba.app" target="_blank" style="color:var(--orange);font-weight:500">sabba.app</a>.</p>
+      </div>
+      <!-- Employee home mockup -->
+      <div class="ui-shell" style="animation-delay:.2s;animation-duration:8s">
+        <div class="ui-chrome">
+          <div class="ui-chrome-dot"><span></span><span></span><span></span></div>
+          <div class="ui-chrome-url">sabba.app/home</div>
+        </div>
+        <div class="ui-inner">
+          <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:8px">
+            <div style="font-size:13px;font-weight:600;color:#1A2E44">Good morning, James 👋</div>
+            <div style="width:28px;height:28px;border-radius:50%;background:#1A2E44;display:flex;align-items:center;justify-content:center;font-size:9px;color:#fff;font-weight:700">JB</div>
+          </div>
+          <div style="background:#1A2E44;border-radius:10px;padding:12px;margin-bottom:8px">
+            <div style="font-size:8px;color:rgba(255,255,255,0.5);text-transform:uppercase;letter-spacing:.07em;margin-bottom:4px">Adventure allowance</div>
+            <div style="font-size:20px;font-weight:700;color:#fff;margin-bottom:8px">£1,000 <span style="font-size:11px;opacity:.5">remaining</span></div>
+            <div class="ui-prog-track" style="background:rgba(255,255,255,0.15)"><div class="ui-prog-fill" style="width:67%;background:rgba(255,255,255,0.6)"></div></div>
+          </div>
+          <div style="display:flex;gap:6px;margin-bottom:8px">
+            <div style="flex:1;background:#FAEEDA;border-radius:8px;padding:7px;text-align:center">
+              <div style="font-size:13px;font-weight:700;color:#92400E">2,450</div>
+              <div style="font-size:8px;color:#B45309">Sabba pts</div>
+            </div>
+            <div style="flex:1;background:#EAF3DE;border-radius:8px;padding:7px;text-align:center">
+              <div style="font-size:13px;font-weight:700;color:#065F46">Lv 3</div>
+              <div style="font-size:8px;color:#059669">Adventurer</div>
+            </div>
+            <div style="flex:1;background:#FEE5D9;border-radius:8px;padding:7px;text-align:center">
+              <div style="font-size:13px;font-weight:700;color:#C44D24">1</div>
+              <div style="font-size:8px;color:#D4622A">Booking</div>
+            </div>
+          </div>
+          <div class="ui-section-title">Your next side quest</div>
+          <div style="display:flex;align-items:center;gap:8px;background:#F7F8FA;border-radius:8px;padding:8px">
+            <div style="font-size:20px">🏔️</div>
+            <div style="flex:1"><div style="font-size:11px;font-weight:600;color:#1A2E44">Inca Trail, Peru</div><div style="font-size:9px;color:#aaa">Intrepid Travel · 15 Mar 2027</div></div>
+            <span class="ui-badge ui-badge--amber">Pending</span>
+          </div>
+        </div>
+      </div>
     </div>
     <div class="feat-grid reveal">
       <div class="feat"><div class="feat-icon-wrap">🏘️</div><h4>Community social feed</h4><p>Employees post about upcoming side quests, like and comment on each other's content. A travel matching algorithm connects employees booking the same package within ±30 days.</p></div>
@@ -543,8 +797,8 @@ menu.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{btn.classL
     </div>
     
     <div class="traction-grid reveal">
-      <div class="traction-item"><div class="traction-num">4</div><div class="traction-label">Full portals built</div><div class="traction-sub">Employee · HR Admin · Vendor · Super Admin</div></div>
-      <div class="traction-item"><div class="traction-num">6</div><div class="traction-label">Package categories</div><div class="traction-sub">Travel · Volunteering · Courses · Work Abroad · Accommodation · Airlines</div></div>
+      <div class="traction-item"><div class="traction-num counter" data-target="4">0</div><div class="traction-label">Full portals built</div><div class="traction-sub">Employee · HR Admin · Vendor · Super Admin</div></div>
+      <div class="traction-item"><div class="traction-num counter" data-target="6">0</div><div class="traction-label">Package categories</div><div class="traction-sub">Travel · Volunteering · Courses · Work Abroad · Accommodation · Airlines</div></div>
       <div class="traction-item"><div class="traction-num">∞</div><div class="traction-label">Employer capacity</div><div class="traction-sub">Multi-tenant architecture — unlimited clients, full data isolation</div></div>
       <div class="traction-item"><div class="traction-num">Live</div><div class="traction-label">Platform status</div><div class="traction-sub">sabba.app — deployed and functional today</div></div>
     </div>
@@ -590,6 +844,24 @@ menu.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{btn.classL
 /* Scroll reveal */
 const obs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible')})},{threshold:0.08});
 document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+
+/* Animated counters */
+const counterObs=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting&&!e.target.dataset.done){
+      e.target.dataset.done=1;
+      const target=+e.target.dataset.target;
+      let current=0;
+      const step=target/40;
+      const timer=setInterval(()=>{
+        current+=step;
+        if(current>=target){current=target;clearInterval(timer)}
+        e.target.textContent=Math.round(current);
+      },35);
+    }
+  });
+},{threshold:0.5});
+document.querySelectorAll('.counter').forEach(el=>counterObs.observe(el));
 </script>
 
 </body>
