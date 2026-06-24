@@ -162,7 +162,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(250,250,248,
 .cat p{font-size:13px;color:#666;line-height:1.65}
 
 /* ── Traction ─────────────────────────────────────────────────────────── */
-.world-svg{width:100%;max-width:700px;display:block;margin:0 auto 48px;height:200px;background:rgba(255,255,255,0.05);border-radius:16px;border:1px solid rgba(255,255,255,0.08)}
+
 .traction-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
 .traction-item{background:var(--glass-dark);backdrop-filter:var(--glass-blur);-webkit-backdrop-filter:var(--glass-blur);border:1px solid var(--glass-dark-border);border-radius:16px;padding:28px 24px;transition:all .2s;box-shadow:0 8px 32px rgba(0,0,0,0.2)}
 .traction-item:hover{background:rgba(26,46,68,0.8);transform:translateY(-3px);box-shadow:0 16px 40px rgba(0,0,0,0.28)}
@@ -306,6 +306,24 @@ footer{background:rgba(17,17,17,0.97);padding:40px 0;border-top:1px solid rgba(2
 .party-list{list-style:none;display:flex;flex-direction:column;gap:8px;margin-top:4px}
 .party-list li{font-size:13px;color:var(--mid);padding-left:16px;position:relative}
 .party-list li::before{content:'→';position:absolute;left:0;color:var(--orange);font-size:12px}
+
+/* ── Traction — light redesign ────────────────────────────────────────── */
+.traction-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.traction-card{background:var(--glass);backdrop-filter:var(--glass-blur);-webkit-backdrop-filter:var(--glass-blur);border:1px solid var(--glass-border);border-radius:20px;padding:28px 24px;transition:all .2s;box-shadow:var(--glass-shadow);position:relative;overflow:hidden}
+.traction-card:hover{transform:translateY(-4px);box-shadow:0 20px 48px rgba(31,38,135,0.13)}
+.traction-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:rgba(212,98,42,0.12);border-radius:20px 20px 0 0}
+.traction-card--accent::before,.traction-card--live::before{background:var(--orange)}
+.traction-card--accent{background:rgba(255,255,255,0.82);border-color:rgba(212,98,42,0.18)}
+.traction-card-top{display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:16px}
+.traction-big{font-family:var(--display);font-size:52px;color:var(--orange);line-height:1;letter-spacing:-0.02em}
+.traction-icon{font-size:28px;opacity:0.35}
+.traction-card-label{font-size:14px;font-weight:600;color:var(--dark);margin-bottom:6px}
+.traction-card-sub{font-size:12px;color:var(--muted);line-height:1.6}
+.traction-live-dot{width:11px;height:11px;background:#22C55E;border-radius:50%;margin-top:8px;animation:livePulse 2s ease-in-out infinite}
+@keyframes livePulse{0%{box-shadow:0 0 0 0 rgba(34,197,94,0.5)}70%{box-shadow:0 0 0 10px rgba(34,197,94,0)}100%{box-shadow:0 0 0 0 rgba(34,197,94,0)}}
+.traction-link{display:inline-flex;align-items:center;gap:6px;margin-top:14px;font-size:12px;font-weight:600;color:var(--orange);border-bottom:1.5px solid rgba(212,98,42,0.25);padding-bottom:2px;transition:border-color .15s}
+.traction-link:hover{border-color:var(--orange)}
+@media(max-width:900px){.traction-grid{grid-template-columns:repeat(2,1fr)}}
 </style>
 </head>
 <body>
@@ -789,18 +807,55 @@ menu.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{btn.classL
 </section>
 
 <!-- ── Traction ────────────────────────────────────────────────────────────── -->
-<section class="section section--navy" id="traction">
+<section class="section" id="traction">
   <div class="wrap">
-    <div class="reveal">
-      <div class="section-kicker section-kicker--light">Traction</div>
-      <h2 class="section-h2" style="color:#fff;margin-bottom:32px">Built solo. Deployed. Live.</h2>
+    <div class="reveal" style="display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:48px;flex-wrap:wrap;gap:16px">
+      <div>
+        <div class="section-kicker">Traction</div>
+        <h2 class="section-h2" style="margin-bottom:0">Built solo.<br>Deployed. Live.</h2>
+      </div>
+      <p style="font-size:15px;color:var(--muted);max-width:360px;line-height:1.7;padding-bottom:6px">The entire Sabba platform was built end-to-end by the founder — from zero to a fully functioning three-sided marketplace.</p>
     </div>
-    
+
     <div class="traction-grid reveal">
-      <div class="traction-item"><div class="traction-num counter" data-target="4">0</div><div class="traction-label">Full portals built</div><div class="traction-sub">Employee · HR Admin · Vendor · Super Admin</div></div>
-      <div class="traction-item"><div class="traction-num counter" data-target="6">0</div><div class="traction-label">Package categories</div><div class="traction-sub">Travel · Volunteering · Courses · Work Abroad · Accommodation · Airlines</div></div>
-      <div class="traction-item"><div class="traction-num">∞</div><div class="traction-label">Employer capacity</div><div class="traction-sub">Multi-tenant architecture — unlimited clients, full data isolation</div></div>
-      <div class="traction-item"><div class="traction-num">Live</div><div class="traction-label">Platform status</div><div class="traction-sub">sabba.app — deployed and functional today</div></div>
+
+      <div class="traction-card">
+        <div class="traction-card-top">
+          <div class="traction-big counter" data-target="4">0</div>
+          <div class="traction-icon">🏗️</div>
+        </div>
+        <div class="traction-card-label">Full portals built</div>
+        <div class="traction-card-sub">Employee · HR Admin · Vendor · Super Admin</div>
+      </div>
+
+      <div class="traction-card traction-card--accent">
+        <div class="traction-card-top">
+          <div class="traction-big counter" data-target="6">0</div>
+          <div class="traction-icon">🗂️</div>
+        </div>
+        <div class="traction-card-label">Package categories</div>
+        <div class="traction-card-sub">Travel · Volunteering · Courses · Work Abroad · Accommodation · Airlines</div>
+      </div>
+
+      <div class="traction-card">
+        <div class="traction-card-top">
+          <div class="traction-big">∞</div>
+          <div class="traction-icon">🏢</div>
+        </div>
+        <div class="traction-card-label">Employer capacity</div>
+        <div class="traction-card-sub">Multi-tenant architecture — unlimited clients, full data isolation per employer</div>
+      </div>
+
+      <div class="traction-card traction-card--live">
+        <div class="traction-card-top">
+          <div class="traction-big" style="font-size:34px;line-height:1.2">sabba<br>.app</div>
+          <div class="traction-live-dot"></div>
+        </div>
+        <div class="traction-card-label">Platform status</div>
+        <div class="traction-card-sub">Fully deployed and functional today — view the live platform</div>
+        <a href="https://sabba.app" target="_blank" class="traction-link">View platform →</a>
+      </div>
+
     </div>
   </div>
 </section>
