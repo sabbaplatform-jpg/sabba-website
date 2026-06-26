@@ -125,8 +125,8 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(250,250,248,
 .section-sub--light{color:rgba(255,255,255,0.6)}
 
 /* ── How it works ─────────────────────────────────────────────────────── */
-.flow-wrap{margin-bottom:48px;overflow-x:auto}
-.flow-svg{width:100%;max-width:700px;display:block;margin:0 auto}
+.flow-wrap{margin-bottom:64px;overflow-x:auto;padding-bottom:16px}
+.flow-svg{width:100%;max-width:800px;display:block;margin:0 auto}
 .party-row{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
 .party{background:var(--glass);backdrop-filter:var(--glass-blur);-webkit-backdrop-filter:var(--glass-blur);border:1px solid var(--glass-border);padding:28px 28px;transition:all .2s;box-shadow:var(--glass-shadow)}
 .party:hover{background:rgba(255,255,255,0.82);transform:translateY(-3px);box-shadow:0 16px 40px rgba(31,38,135,0.13)}
@@ -529,59 +529,60 @@ menu.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{btn.classL
     </div>
     <!-- Animated flow -->
     <div class="flow-wrap reveal">
-      <svg class="flow-svg" viewBox="0 0 700 320" xmlns="http://www.w3.org/2000/svg" style="height:320px">
+      <svg class="flow-svg" viewBox="0 0 800 420" xmlns="http://www.w3.org/2000/svg" style="height:420px">
   <defs>
     <marker id="arr" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto">
       <path d="M0,0 L0,6 L9,3 z" fill="#D4622A"/>
     </marker>
-    <marker id="arr2" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto">
-      <path d="M0,0 L0,6 L9,3 z" fill="#1A2E44"/>
+    <marker id="arr-green" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto">
+      <path d="M0,0 L0,6 L9,3 z" fill="#2A5C3A"/>
     </marker>
   </defs>
 
-  <!-- Centre — Sabba hub -->
-  <circle cx="350" cy="160" r="62" fill="#FAFAF8" stroke="#E2E0DC" stroke-width="2.5"
+  <!-- ── Sabba hub — centre ── -->
+  <circle cx="400" cy="180" r="65" fill="#FAFAF8" stroke="#E2E0DC" stroke-width="2.5"
     filter="drop-shadow(0 6px 20px rgba(0,0,0,0.1))"/>
-  <text x="350" y="154" text-anchor="middle" font-size="22" font-weight="700" fill="#1A2E44" font-family="Inter">Sabba</text>
-  <text x="350" y="176" text-anchor="middle" font-size="12" font-weight="600" fill="#888" font-family="Inter">THE PLATFORM</text>
+  <text x="400" y="173" text-anchor="middle" font-size="22" font-weight="700" fill="#1A2E44" font-family="Inter">Sabba</text>
+  <text x="400" y="196" text-anchor="middle" font-size="12" font-weight="600" fill="#888" font-family="Inter">THE PLATFORM</text>
 
-  <!-- Node — Employer (top left) -->
-  <circle cx="110" cy="68" r="50" fill="#1A2E44" filter="drop-shadow(0 4px 12px rgba(26,46,68,0.3))"/>
-  <text x="110" y="58" text-anchor="middle" font-size="24" font-family="Inter">🏢</text>
-  <text x="110" y="82" text-anchor="middle" font-size="12" font-weight="700" fill="rgba(255,255,255,0.95)" font-family="Inter">EMPLOYER</text>
+  <!-- ── Employer — left, same height as Sabba ── -->
+  <circle cx="105" cy="180" r="55" fill="#1A2E44" filter="drop-shadow(0 4px 12px rgba(26,46,68,0.3))"/>
+  <text x="105" y="170" text-anchor="middle" font-size="26" font-family="Inter">🏢</text>
+  <text x="105" y="196" text-anchor="middle" font-size="12" font-weight="700" fill="rgba(255,255,255,0.95)" font-family="Inter">EMPLOYER</text>
 
-  <!-- Arrow Employer → Sabba -->
-  <path d="M155 92 L288 138" stroke="#D4622A" stroke-width="2.5" fill="none" stroke-dasharray="6 3" marker-end="url(#arr)">
+  <!-- Arrow Employer → Sabba — straight horizontal, label above -->
+  <text x="252" y="154" text-anchor="middle" font-size="11" font-weight="700" fill="#D4622A" font-family="Inter">SUBSCRIBES</text>
+  <path d="M162 180 L328 180" stroke="#D4622A" stroke-width="2.5" fill="none" stroke-dasharray="6 3" marker-end="url(#arr)">
     <animate attributeName="stroke-dashoffset" values="0;-18" dur="1.4s" repeatCount="indefinite"/>
   </path>
-  <text x="200" y="106" text-anchor="middle" font-size="11" font-weight="700" fill="#D4622A" font-family="Inter" transform="rotate(-18 200 106)">SUBSCRIBES</text>
 
-  <!-- Node — Employee (top right) -->
-  <circle cx="590" cy="68" r="50" fill="#D4622A" filter="drop-shadow(0 4px 12px rgba(212,98,42,0.35))"/>
-  <text x="590" y="58" text-anchor="middle" font-size="24" font-family="Inter">🧭</text>
-  <text x="590" y="82" text-anchor="middle" font-size="12" font-weight="700" fill="rgba(255,255,255,0.95)" font-family="Inter">EMPLOYEE</text>
+  <!-- ── Employee — right, same height as Sabba ── -->
+  <circle cx="695" cy="180" r="55" fill="#D4622A" filter="drop-shadow(0 4px 12px rgba(212,98,42,0.35))"/>
+  <text x="695" y="170" text-anchor="middle" font-size="26" font-family="Inter">🧭</text>
+  <text x="695" y="196" text-anchor="middle" font-size="12" font-weight="700" fill="rgba(255,255,255,0.95)" font-family="Inter">EMPLOYEE</text>
 
-  <!-- Arrow Employee → Sabba -->
-  <path d="M545 92 L412 138" stroke="#D4622A" stroke-width="2.5" fill="none" stroke-dasharray="6 3" marker-end="url(#arr)">
+  <!-- Arrow Employee → Sabba — straight horizontal, label above -->
+  <text x="548" y="154" text-anchor="middle" font-size="11" font-weight="700" fill="#D4622A" font-family="Inter">BOOKS &amp; PAYS</text>
+  <path d="M638 180 L472 180" stroke="#D4622A" stroke-width="2.5" fill="none" stroke-dasharray="6 3" marker-end="url(#arr)">
     <animate attributeName="stroke-dashoffset" values="0;-18" dur="1.6s" repeatCount="indefinite"/>
   </path>
-  <text x="490" y="106" text-anchor="middle" font-size="11" font-weight="700" fill="#D4622A" font-family="Inter" transform="rotate(18 490 106)">BOOKS &amp; PAYS</text>
 
-  <!-- Node — Vendor (bottom) -->
-  <circle cx="350" cy="278" r="50" fill="#2A5C3A" filter="drop-shadow(0 4px 12px rgba(42,92,58,0.3))"/>
-  <text x="350" y="268" text-anchor="middle" font-size="24" font-family="Inter">🗺️</text>
-  <text x="350" y="292" text-anchor="middle" font-size="12" font-weight="700" fill="rgba(255,255,255,0.95)" font-family="Inter">VENDOR</text>
+  <!-- ── Vendor — bottom, centred below Sabba ── -->
+  <circle cx="400" cy="360" r="55" fill="#2A5C3A" filter="drop-shadow(0 4px 12px rgba(42,92,58,0.3))"/>
+  <text x="400" y="350" text-anchor="middle" font-size="26" font-family="Inter">🗺️</text>
+  <text x="400" y="374" text-anchor="middle" font-size="12" font-weight="700" fill="rgba(255,255,255,0.95)" font-family="Inter">VENDOR</text>
 
-  <!-- Arrow Vendor → Sabba (bidirectional — lists up, payment down) -->
-  <path d="M350 225 L350 222" stroke="none"/>
-  <path d="M330 226 L330 187" stroke="#2A5C3A" stroke-width="2.5" fill="none" stroke-dasharray="6 3" marker-end="url(#arr2)">
+  <!-- Vendor ↑ Sabba — lists (left lane) -->
+  <text x="358" y="278" text-anchor="middle" font-size="11" font-weight="700" fill="#2A5C3A" font-family="Inter">LISTS</text>
+  <path d="M378 303 L378 248" stroke="#2A5C3A" stroke-width="2.5" fill="none" stroke-dasharray="6 3" marker-end="url(#arr-green)">
     <animate attributeName="stroke-dashoffset" values="0;-18" dur="1.8s" repeatCount="indefinite"/>
   </path>
-  <path d="M370 187 L370 226" stroke="#D4622A" stroke-width="2.5" fill="none" stroke-dasharray="6 3" marker-end="url(#arr)">
+
+  <!-- Sabba ↓ Vendor — paid (right lane) -->
+  <text x="442" y="278" text-anchor="middle" font-size="11" font-weight="700" fill="#D4622A" font-family="Inter">PAID</text>
+  <path d="M422 248 L422 303" stroke="#D4622A" stroke-width="2.5" fill="none" stroke-dasharray="6 3" marker-end="url(#arr)">
     <animate attributeName="stroke-dashoffset" values="0;-18" dur="1.8s" repeatCount="indefinite"/>
   </path>
-  <text x="408" y="212" text-anchor="middle" font-size="10" font-weight="700" fill="#2A5C3A" font-family="Inter">LISTS</text>
-  <text x="295" y="212" text-anchor="middle" font-size="10" font-weight="700" fill="#D4622A" font-family="Inter">PAID</text>
 
 </svg>
     </div>
