@@ -30,7 +30,7 @@
   --glass-dark-border:rgba(255,255,255,0.1);
 }
 html{scroll-behavior:smooth}
-body{font-family:var(--body);background:var(--cream);color:var(--dark);-webkit-font-smoothing:antialiased;line-height:1.6;overflow-x:hidden;background-image:radial-gradient(ellipse at 15% 15%,rgba(212,98,42,0.07) 0%,transparent 55%),radial-gradient(ellipse at 85% 85%,rgba(26,46,68,0.07) 0%,transparent 55%),radial-gradient(ellipse at 70% 10%,rgba(212,98,42,0.05) 0%,transparent 45%);background-attachment:fixed}
+body{font-family:var(--body);background:var(--cream);color:var(--dark);-webkit-font-smoothing:antialiased;line-height:1.6;overflow-x:hidden;background:#FAFAF8}
 a{color:inherit;text-decoration:none}
 
 /* ── Nav ──────────────────────────────────────────────────────────────── */
@@ -125,12 +125,12 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(250,250,248,
 .section-sub--light{color:rgba(255,255,255,0.6)}
 
 /* ── How it works ─────────────────────────────────────────────────────── */
-.flow-wrap{margin-bottom:36px;overflow-x:auto}
-.flow-svg{width:100%;max-width:700px;display:block;margin:0 auto}
+.flow-wrap{margin-bottom:48px;overflow-x:auto}
+.flow-svg{width:100%;max-width:800px;display:block;margin:0 auto}
 .party-row{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
 .party{background:var(--glass);backdrop-filter:var(--glass-blur);-webkit-backdrop-filter:var(--glass-blur);border:1px solid var(--glass-border);padding:28px 28px;transition:all .2s;box-shadow:var(--glass-shadow)}
 .party:hover{background:rgba(255,255,255,0.82);transform:translateY(-3px);box-shadow:0 16px 40px rgba(31,38,135,0.13)}
-.party-n{font-family:var(--display);font-size:40px;color:rgba(0,0,0,0.05);line-height:1;margin-bottom:10px}
+.party-n{font-family:var(--display);font-size:18px;font-weight:700;color:var(--white);background:var(--orange);width:40px;height:40px;border-radius:50%;display:flex;align-items:center;justify-content:center;margin-bottom:16px;line-height:1}
 .party-who{font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--orange);margin-bottom:10px;display:flex;align-items:center;gap:8px}
 .party-bar{width:22px;height:2px;background:var(--orange);display:inline-block;flex-shrink:0}
 .party h3{font-size:18px;font-weight:600;margin-bottom:10px;color:var(--dark)}
@@ -314,9 +314,9 @@ footer{background:rgba(17,17,17,0.97);padding:40px 0;border-top:1px solid rgba(2
 .traction-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:rgba(212,98,42,0.12);border-radius:20px 20px 0 0}
 .traction-card--accent::before,.traction-card--live::before{background:var(--orange)}
 .traction-card--accent{background:rgba(255,255,255,0.82);border-color:rgba(212,98,42,0.18)}
-.traction-card-top{display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:16px}
-.traction-big{font-family:var(--display);font-size:52px;color:var(--orange);line-height:1;letter-spacing:-0.02em}
-.traction-icon{font-size:28px;opacity:0.35}
+.traction-card-top{margin-bottom:16px}
+.traction-big{font-family:var(--display);font-size:52px;color:var(--orange);line-height:1;letter-spacing:-0.02em;margin-bottom:16px}
+
 .traction-card-label{font-size:14px;font-weight:600;color:var(--dark);margin-bottom:6px}
 .traction-card-sub{font-size:12px;color:var(--muted);line-height:1.6}
 .traction-live-dot{width:11px;height:11px;background:#22C55E;border-radius:50%;margin-top:8px;animation:livePulse 2s ease-in-out infinite}
@@ -324,6 +324,41 @@ footer{background:rgba(17,17,17,0.97);padding:40px 0;border-top:1px solid rgba(2
 .traction-link{display:inline-flex;align-items:center;gap:6px;margin-top:14px;font-size:12px;font-weight:600;color:var(--orange);border-bottom:1.5px solid rgba(212,98,42,0.25);padding-bottom:2px;transition:border-color .15s}
 .traction-link:hover{border-color:var(--orange)}
 @media(max-width:900px){.traction-grid{grid-template-columns:repeat(2,1fr)}}
+
+/* ── Section colour variants ──────────────────────────────── */
+.section--warm{background:#F2EDE8}
+.section--navy-soft{background:linear-gradient(135deg,#1A2E44 0%,#1e3550 100%);color:#fff}
+.section--navy-soft .section-kicker{color:rgba(212,98,42,0.85);background:rgba(212,98,42,0.12);border-color:rgba(212,98,42,0.2)}
+.section--navy-soft .section-h2{color:#fff}
+.section--navy-soft .section-sub{color:rgba(255,255,255,0.6)}
+.section--navy-soft .feat{background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1)}
+.section--navy-soft .feat:hover{background:rgba(255,255,255,0.1)}
+.section--navy-soft .feat h4{color:#fff}
+.section--navy-soft .feat p{color:rgba(255,255,255,0.6)}
+.section--navy-soft .feat-icon-wrap{background:rgba(212,98,42,0.15);border-color:rgba(212,98,42,0.25)}
+.section--navy-soft .tech-pill{background:rgba(255,255,255,0.08);border-color:rgba(255,255,255,0.12);color:rgba(255,255,255,0.8)}
+.section--navy-soft .tech-pill:hover{border-color:var(--orange);color:var(--orange)}
+.section--navy-soft a[style*="orange"]{color:#E8834A !important}
+.section--warm{background:#F2EDE8}
+
+/* ── Per-section gradient backgrounds ────────────────────────── */
+.section--cream{background:radial-gradient(ellipse at 10% 50%,rgba(212,98,42,0.06) 0%,transparent 60%),radial-gradient(ellipse at 90% 20%,rgba(26,46,68,0.05) 0%,transparent 50%),#FAFAF8}
+.section--white{background:radial-gradient(ellipse at 80% 80%,rgba(212,98,42,0.05) 0%,transparent 55%),radial-gradient(ellipse at 20% 20%,rgba(26,46,68,0.04) 0%,transparent 50%),rgba(255,255,255,0.85);backdrop-filter:blur(8px)}
+.section--sage{background:radial-gradient(ellipse at 90% 10%,rgba(212,98,42,0.07) 0%,transparent 55%),radial-gradient(ellipse at 10% 90%,rgba(42,92,58,0.06) 0%,transparent 55%),#F0F4F0}
+.section--sand{background:radial-gradient(ellipse at 20% 80%,rgba(212,98,42,0.08) 0%,transparent 55%),radial-gradient(ellipse at 80% 20%,rgba(26,46,68,0.05) 0%,transparent 50%),#F5EFE8}
+.section--sky{background:radial-gradient(ellipse at 50% 0%,rgba(26,46,68,0.08) 0%,transparent 60%),radial-gradient(ellipse at 80% 100%,rgba(212,98,42,0.06) 0%,transparent 50%),#EEF3F8}
+
+/* ── Scroll-in card animations ───────────────────────────────── */
+.slide-up{opacity:0;transform:translateY(40px);transition:opacity .6s ease,transform .6s ease}
+.slide-left{opacity:0;transform:translateX(-40px);transition:opacity .6s ease,transform .6s ease}
+.slide-right{opacity:0;transform:translateX(40px);transition:opacity .6s ease,transform .6s ease}
+.slide-up.in,.slide-left.in,.slide-right.in{opacity:1;transform:translate(0,0)}
+.delay-1{transition-delay:.1s}
+.delay-2{transition-delay:.2s}
+.delay-3{transition-delay:.3s}
+.delay-4{transition-delay:.4s}
+.delay-5{transition-delay:.5s}
+.delay-6{transition-delay:.6s}
 </style>
 </head>
 <body>
@@ -485,7 +520,7 @@ menu.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{btn.classL
 </section>
 
 <!-- ── How it works ───────────────────────────────────────────────────────── -->
-<section class="section" id="how-it-works">
+<section class="section section--white" id="how-it-works">
   <div class="wrap">
     <div class="reveal">
       <div class="section-kicker">How it works</div>
@@ -494,28 +529,28 @@ menu.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{btn.classL
     </div>
     <!-- Animated flow -->
     <div class="flow-wrap reveal">
-      <svg class="flow-svg" viewBox="0 0 700 100" xmlns="http://www.w3.org/2000/svg">
-        <line x1="120" y1="50" x2="580" y2="50" stroke="#E8E5E1" stroke-width="2" stroke-dasharray="6 4">
+      <svg class="flow-svg" viewBox="0 0 780 180" xmlns="http://www.w3.org/2000/svg" style="height:220px">
+        <line x1="100" y1="95" x2="575" y2="95" stroke="#E8E5E1" stroke-width="2.5" stroke-dasharray="8 5">
           <animate attributeName="stroke-dashoffset" values="0;-20" dur="1.2s" repeatCount="indefinite"/>
         </line>
-        <circle cx="120" cy="50" r="32" fill="#1A2E44"/>
-        <text x="120" y="44" text-anchor="middle" font-size="18" fill="white" font-family="Inter">🏢</text>
-        <text x="120" y="60" text-anchor="middle" font-size="9" fill="rgba(255,255,255,0.8)" font-family="Inter" font-weight="600">EMPLOYER</text>
-        <path d="M162 50L228 50" stroke="#D4622A" stroke-width="2" fill="none" marker-end="url(#arr)"/>
-        <text x="195" y="40" text-anchor="middle" font-size="8.5" fill="#D4622A" font-family="Inter" font-weight="600">SUBSCRIBES</text>
-        <circle cx="270" cy="50" r="32" fill="#D4622A"/>
-        <text x="270" y="44" text-anchor="middle" font-size="18" fill="white" font-family="Inter">🧭</text>
-        <text x="270" y="60" text-anchor="middle" font-size="9" fill="rgba(255,255,255,0.9)" font-family="Inter" font-weight="600">EMPLOYEE</text>
-        <path d="M312 50L378 50" stroke="#D4622A" stroke-width="2" fill="none" marker-end="url(#arr)"/>
-        <text x="345" y="40" text-anchor="middle" font-size="8.5" fill="#D4622A" font-family="Inter" font-weight="600">BOOKS &amp; PAYS</text>
-        <circle cx="420" cy="50" r="32" fill="#FAFAF8" stroke="#E8E5E1" stroke-width="1.5"/>
-        <text x="420" y="44" text-anchor="middle" font-size="14" fill="#1A2E44" font-family="Inter" font-weight="700">Sabba</text>
-        <text x="420" y="60" text-anchor="middle" font-size="9" fill="#777" font-family="Inter" font-weight="600">PLATFORM</text>
-        <path d="M462 50L528 50" stroke="#D4622A" stroke-width="2" fill="none" marker-end="url(#arr)"/>
-        <text x="495" y="40" text-anchor="middle" font-size="8.5" fill="#D4622A" font-family="Inter" font-weight="600">LISTS &amp; EARNS</text>
-        <circle cx="570" cy="50" r="32" fill="#2A5C3A"/>
-        <text x="570" y="44" text-anchor="middle" font-size="18" fill="white" font-family="Inter">🗺️</text>
-        <text x="570" y="60" text-anchor="middle" font-size="9" fill="rgba(255,255,255,0.9)" font-family="Inter" font-weight="600">VENDOR</text>
+        <circle cx="100" cy="95" r="52" fill="#1A2E44"/>
+        <text x="100" y="88" text-anchor="middle" font-size="28" fill="white" font-family="Inter">🏢</text>
+        <text x="100" y="117" text-anchor="middle" font-size="13" fill="rgba(255,255,255,0.9)" font-family="Inter" font-weight="700">EMPLOYER</text>
+        <path d="M158 95L205 95" stroke="#D4622A" stroke-width="3" fill="none" marker-end="url(#arr)"/>
+        <text x="183" y="76" text-anchor="middle" font-size="11" fill="#D4622A" font-family="Inter" font-weight="700">SUBSCRIBES</text>
+        <circle cx="265" cy="95" r="52" fill="#D4622A"/>
+        <text x="265" y="88" text-anchor="middle" font-size="28" fill="white" font-family="Inter">🧭</text>
+        <text x="265" y="117" text-anchor="middle" font-size="13" fill="rgba(255,255,255,0.9)" font-family="Inter" font-weight="700">EMPLOYEE</text>
+        <path d="M323 95L365 95" stroke="#D4622A" stroke-width="3" fill="none" marker-end="url(#arr)"/>
+        <text x="345" y="76" text-anchor="middle" font-size="11" fill="#D4622A" font-family="Inter" font-weight="700">BOOKS &amp; PAYS</text>
+        <circle cx="420" cy="95" r="52" fill="#FAFAF8" stroke="#E8E5E1" stroke-width="2"/>
+        <text x="420" y="90" text-anchor="middle" font-size="20" fill="#1A2E44" font-family="Inter" font-weight="700">Sabba</text>
+        <text x="420" y="116" text-anchor="middle" font-size="13" fill="#888" font-family="Inter" font-weight="600">PLATFORM</text>
+        <path d="M478 95L515 95" stroke="#D4622A" stroke-width="3" fill="none" marker-end="url(#arr)"/>
+        <text x="498" y="76" text-anchor="middle" font-size="11" fill="#D4622A" font-family="Inter" font-weight="700">LISTS &amp; EARNS</text>
+        <circle cx="575" cy="95" r="52" fill="#2A5C3A"/>
+        <text x="575" y="88" text-anchor="middle" font-size="28" fill="white" font-family="Inter">🗺️</text>
+        <text x="575" y="117" text-anchor="middle" font-size="13" fill="rgba(255,255,255,0.9)" font-family="Inter" font-weight="700">VENDOR</text>
         <defs>
           <marker id="arr" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
             <path d="M0,0 L0,6 L8,3 z" fill="#D4622A"/>
@@ -686,7 +721,7 @@ menu.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{btn.classL
 </section>
 
 <!-- ── Platform ────────────────────────────────────────────────────────────── -->
-<section class="section section--white" id="platform">
+<section class="section section--sage" id="platform">
   <div class="wrap">
     <div class="ui-row reveal" style="margin-bottom:48px">
       <div class="ui-copy">
@@ -734,14 +769,14 @@ menu.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{btn.classL
       </div>
     </div>
     <div class="feat-grid reveal">
-      <div class="feat"><div class="feat-icon-wrap">🏘️</div><h4>Community social feed</h4><p>Employees post about upcoming side quests, like and comment on each other's content. A travel matching algorithm connects employees booking the same package within ±30 days.</p></div>
-      <div class="feat"><div class="feat-icon-wrap">🏆</div><h4>Gamification — Explorer to Legend</h4><p>Five-level progression system with daily points caps. Earn Sabba Points for bookings, posts, comments and likes — redeemable against future bookings (100pts = £1).</p></div>
-      <div class="feat"><div class="feat-icon-wrap">📋</div><h4>My Bookings — tabbed layout</h4><p>Upcoming, Pending, Past and All tabs with counts. Full booking history, payroll progress bars, HR approval status and one-tap access to booking details.</p></div>
-      <div class="feat"><div class="feat-icon-wrap">💳</div><h4>Payroll-integrated checkout</h4><p>Employees choose their payroll spread before adding to cart. Sabba Points redemption panel sits above the fold. Stripe card checkout also supported.</p></div>
-      <div class="feat"><div class="feat-icon-wrap">📧</div><h4>Transactional emails via SendGrid</h4><p>Booking submitted notifications to employee and HR admin. Booking approval emails to employee. In-app notification system throughout.</p></div>
-      <div class="feat"><div class="feat-icon-wrap">🔒</div><h4>Security &amp; compliance</h4><p>Rate limiting, HSTS, X-Frame-Options, Referrer-Policy. GDPR-compliant privacy policy live at /privacy. Multi-tenant architecture with full data isolation per employer.</p></div>
-      <div class="feat"><div class="feat-icon-wrap">⭐</div><h4>Platinum sponsored listings</h4><p>Four premium sidebar ad slots in the Community page. Separate from marketplace featured slots. A distinct vendor revenue stream managed by Super Admin.</p></div>
-      <div class="feat"><div class="feat-icon-wrap">⚡</div><h4>Performance &amp; UX</h4><p>RouteProgress bar on every navigation. Skeleton loading screens on Home, Marketplace, Bookings and Allowance. Fully mobile-responsive across all three portals.</p></div>
+      <div class="feat slide-up delay-1"><div class="feat-icon-wrap">🏘️</div><h4>Community social feed</h4><p>Employees post about upcoming side quests, like and comment on each other's content. A travel matching algorithm connects employees booking the same package within ±30 days.</p></div>
+      <div class="feat slide-up delay-2"><div class="feat-icon-wrap">🏆</div><h4>Gamification — Explorer to Legend</h4><p>Five-level progression system with daily points caps. Earn Sabba Points for bookings, posts, comments and likes — redeemable against future bookings (100pts = £1).</p></div>
+      <div class="feat slide-up delay-3"><div class="feat-icon-wrap">📋</div><h4>My Bookings — tabbed layout</h4><p>Upcoming, Pending, Past and All tabs with counts. Full booking history, payroll progress bars, HR approval status and one-tap access to booking details.</p></div>
+      <div class="feat slide-up delay-4"><div class="feat-icon-wrap">💳</div><h4>Payroll-integrated checkout</h4><p>Employees choose their payroll spread before adding to cart. Sabba Points redemption panel sits above the fold. Stripe card checkout also supported.</p></div>
+      <div class="feat slide-up delay-1"><div class="feat-icon-wrap">📧</div><h4>Transactional emails via SendGrid</h4><p>Booking submitted notifications to employee and HR admin. Booking approval emails to employee. In-app notification system throughout.</p></div>
+      <div class="feat slide-up delay-2"><div class="feat-icon-wrap">🔒</div><h4>Security &amp; compliance</h4><p>Rate limiting, HSTS, X-Frame-Options, Referrer-Policy. GDPR-compliant privacy policy live at /privacy. Multi-tenant architecture with full data isolation per employer.</p></div>
+      <div class="feat slide-up delay-3"><div class="feat-icon-wrap">⭐</div><h4>Platinum sponsored listings</h4><p>Four premium sidebar ad slots in the Community page. Separate from marketplace featured slots. A distinct vendor revenue stream managed by Super Admin.</p></div>
+      <div class="feat slide-up delay-4"><div class="feat-icon-wrap">⚡</div><h4>Performance &amp; UX</h4><p>RouteProgress bar on every navigation. Skeleton loading screens on Home, Marketplace, Bookings and Allowance. Fully mobile-responsive across all three portals.</p></div>
     </div>
     <div class="tech-pills reveal">
       <div class="tech-pill">React 18</div>
@@ -757,7 +792,7 @@ menu.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{btn.classL
 </section>
 
 <!-- ── Categories ─────────────────────────────────────────────────────────── -->
-<section class="section" id="categories">
+<section class="section section--sand" id="categories">
   <div class="wrap">
     <div class="reveal">
       <div class="section-kicker">Package categories</div>
@@ -796,63 +831,52 @@ menu.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{btn.classL
       </svg>
     </div>
     <div class="cats-grid reveal">
-      <div class="cat"><div class="cat-icon">✈️</div><h4>Travel &amp; Adventure</h4><p>Trekking, expeditions, safaris, cycling tours, cultural journeys — worldwide destinations across all experience levels.</p></div>
-      <div class="cat"><div class="cat-icon">🌱</div><h4>Volunteering</h4><p>Marine conservation, community projects, humanitarian work and skills-based placements with structured outcomes.</p></div>
-      <div class="cat"><div class="cat-icon">📚</div><h4>Courses &amp; Skills</h4><p>Language immersion, photography, SCUBA certification, cookery schools and leadership programmes abroad.</p></div>
-      <div class="cat"><div class="cat-icon">💻</div><h4>Work Abroad</h4><p>Co-working retreats, digital nomad programmes and workcations — for employers who support remote working.</p></div>
-      <div class="cat"><div class="cat-icon">🏡</div><h4>Accommodation</h4><p>Sabbatical-length stays, coliving spaces and serviced apartments — standalone or combined with other categories.</p></div>
-      <div class="cat"><div class="cat-icon">🛫</div><h4>Airlines &amp; Transfers</h4><p>Long-haul flights, holiday packages, rail passes and airport transfers — add-on or standalone bookings.</p></div>
+      <div class="cat slide-up delay-1"><div class="cat-icon">✈️</div><h4>Travel &amp; Adventure</h4><p>Trekking, expeditions, safaris, cycling tours, cultural journeys — worldwide destinations across all experience levels.</p></div>
+      <div class="cat slide-up delay-2"><div class="cat-icon">🌱</div><h4>Volunteering</h4><p>Marine conservation, community projects, humanitarian work and skills-based placements with structured outcomes.</p></div>
+      <div class="cat slide-up delay-3"><div class="cat-icon">📚</div><h4>Courses &amp; Skills</h4><p>Language immersion, photography, SCUBA certification, cookery schools and leadership programmes abroad.</p></div>
+      <div class="cat slide-up delay-1"><div class="cat-icon">💻</div><h4>Work Abroad</h4><p>Co-working retreats, digital nomad programmes and workcations — for employers who support remote working.</p></div>
+      <div class="cat slide-up delay-2"><div class="cat-icon">🏡</div><h4>Accommodation</h4><p>Sabbatical-length stays, coliving spaces and serviced apartments — standalone or combined with other categories.</p></div>
+      <div class="cat slide-up delay-3"><div class="cat-icon">🛫</div><h4>Airlines &amp; Transfers</h4><p>Long-haul flights, holiday packages, rail passes and airport transfers — add-on or standalone bookings.</p></div>
     </div>
   </div>
 </section>
 
 <!-- ── Traction ────────────────────────────────────────────────────────────── -->
-<section class="section" id="traction">
+<section class="section section--sky" id="traction">
   <div class="wrap">
-    <div class="reveal" style="display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:48px;flex-wrap:wrap;gap:16px">
-      <div>
-        <div class="section-kicker">Traction</div>
-        <h2 class="section-h2" style="margin-bottom:0">Built solo.<br>Deployed. Live.</h2>
-      </div>
-      <p style="font-size:15px;color:var(--muted);max-width:360px;line-height:1.7;padding-bottom:6px">The entire Sabba platform was built end-to-end by the founder — from zero to a fully functioning three-sided marketplace.</p>
+    <div class="reveal" style="margin-bottom:48px">
+      <div class="section-kicker">Traction</div>
+      <h2 class="section-h2" style="margin-bottom:12px">Built solo. Deployed. Live.</h2>
+      <p style="font-size:16px;color:var(--muted);max-width:560px;line-height:1.7">The entire Sabba platform was built end-to-end by the founder — from zero to a fully functioning three-sided marketplace.</p>
     </div>
 
     <div class="traction-grid reveal">
 
-      <div class="traction-card">
-        <div class="traction-card-top">
-          <div class="traction-big counter" data-target="4">0</div>
-          <div class="traction-icon">🏗️</div>
-        </div>
+      <div class="traction-card slide-up">
+        <div class="traction-big counter" data-target="4">0</div>
         <div class="traction-card-label">Full portals built</div>
         <div class="traction-card-sub">Employee · HR Admin · Vendor · Super Admin</div>
       </div>
 
-      <div class="traction-card traction-card--accent">
-        <div class="traction-card-top">
-          <div class="traction-big counter" data-target="6">0</div>
-          <div class="traction-icon">🗂️</div>
-        </div>
+      <div class="traction-card traction-card--accent slide-up delay-2">
+        <div class="traction-big counter" data-target="6">0</div>
         <div class="traction-card-label">Package categories</div>
         <div class="traction-card-sub">Travel · Volunteering · Courses · Work Abroad · Accommodation · Airlines</div>
       </div>
 
       <div class="traction-card">
-        <div class="traction-card-top">
-          <div class="traction-big">∞</div>
-          <div class="traction-icon">🏢</div>
-        </div>
+        <div class="traction-big" style="font-size:42px">∞</div>
         <div class="traction-card-label">Employer capacity</div>
-        <div class="traction-card-sub">Multi-tenant architecture — unlimited clients, full data isolation per employer</div>
+        <div class="traction-card-sub">Multi-tenant — unlimited clients, full data isolation</div>
       </div>
 
       <div class="traction-card traction-card--live">
-        <div class="traction-card-top">
-          <div class="traction-big" style="font-size:34px;line-height:1.2">sabba<br>.app</div>
+        <div style="display:flex;align-items:center;gap:10px;margin-bottom:16px">
+          <div class="traction-big" style="font-size:36px;margin-bottom:0">Live</div>
           <div class="traction-live-dot"></div>
         </div>
         <div class="traction-card-label">Platform status</div>
-        <div class="traction-card-sub">Fully deployed and functional today — view the live platform</div>
+        <div class="traction-card-sub">Fully deployed and functional today</div>
         <a href="https://sabba.app" target="_blank" class="traction-link">View platform →</a>
       </div>
 
@@ -861,7 +885,7 @@ menu.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{btn.classL
 </section>
 
 <!-- ── Contact ────────────────────────────────────────────────────────────── -->
-<section class="section" id="contact">
+<section class="section section--cream" id="contact">
   <div class="wrap">
     <div class="contact-wrap reveal"><div class="contact-inner">
       <div class="contact-left">
@@ -899,6 +923,12 @@ menu.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{btn.classL
 /* Scroll reveal */
 const obs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible')})},{threshold:0.08});
 document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+
+/* Card scroll-in animations */
+const cardObs=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');cardObs.unobserve(e.target);}})
+},{threshold:0.12,rootMargin:'0px 0px -40px 0px'});
+document.querySelectorAll('.slide-up,.slide-left,.slide-right').forEach(el=>cardObs.observe(el));
 
 /* Animated counters */
 const counterObs=new IntersectionObserver(entries=>{
