@@ -382,6 +382,7 @@ footer{background:rgba(17,17,17,0.97);padding:40px 0;border-top:1px solid rgba(2
     <div class="nav-links">
       <a href="#how-it-works">How it works</a>
       <a href="#platform">Platform</a>
+      <a href="#ai">AI</a>
       <a href="#categories">Categories</a>
       <a href="#traction">Traction</a>
       <a href="#contact">Contact</a>
@@ -394,6 +395,7 @@ footer{background:rgba(17,17,17,0.97);padding:40px 0;border-top:1px solid rgba(2
   <div class="mobile-menu" id="mobile-menu">
     <a href="#how-it-works">How it works</a>
     <a href="#platform">Platform</a>
+    <a href="#ai">AI</a>
     <a href="#categories">Categories</a>
     <a href="#traction">Traction</a>
     <a href="#contact">Contact</a>
@@ -809,6 +811,7 @@ menu.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{btn.classL
       </div>
     </div>
     <div class="feat-grid reveal">
+      <div class="feat slide-up delay-1"><div class="feat-icon-wrap">✨</div><h4>AI-powered recommendations</h4><p>Every package is embedded as a semantic vector with OpenAI. Each employee's quiz answers and booking history build a preference vector, and the marketplace ranks packages by cosine similarity — so the right side quest surfaces first.</p></div>
       <div class="feat slide-up delay-1"><div class="feat-icon-wrap">🏘️</div><h4>Community social feed</h4><p>Employees post about upcoming side quests, like and comment on each other's content. A travel matching algorithm connects employees booking the same package within ±30 days.</p></div>
       <div class="feat slide-up delay-2"><div class="feat-icon-wrap">🏆</div><h4>Gamification — Explorer to Legend</h4><p>Five-level progression system with daily points caps. Earn Sabba Points for bookings, posts, comments and likes — redeemable against future bookings (100pts = £1).</p></div>
       <div class="feat slide-up delay-3"><div class="feat-icon-wrap">📋</div><h4>My Bookings — tabbed layout</h4><p>Upcoming, Pending, Past and All tabs with counts. Full booking history, payroll progress bars, HR approval status and one-tap access to booking details.</p></div>
@@ -822,11 +825,105 @@ menu.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{btn.classL
       <div class="tech-pill">React 18</div>
       <div class="tech-pill">Node.js / Express</div>
       <div class="tech-pill">PostgreSQL via Supabase</div>
+      <div class="tech-pill">pgvector</div>
+      <div class="tech-pill">OpenAI embeddings</div>
       <div class="tech-pill">Stripe</div>
       <div class="tech-pill">SendGrid</div>
       <div class="tech-pill">Vercel</div>
       <div class="tech-pill">JWT Auth</div>
       <div class="tech-pill">Multi-tenant RBAC</div>
+    </div>
+  </div>
+</section>
+
+<!-- ── AI personalisation ─────────────────────────────────────────────────── -->
+<section class="section section--white" id="ai">
+  <div class="wrap">
+    <div class="reveal">
+      <div class="section-kicker">AI personalisation</div>
+      <h2 class="section-h2">The right side quest,<br>surfaced first.</h2>
+      <p class="section-sub">Sabba learns what each employee actually wants — then ranks the entire marketplace around them. No two people see the same order.</p>
+    </div>
+
+    <!-- Embedding → similarity → ranking flow -->
+    <div class="flow-wrap reveal" style="margin-bottom:48px">
+      <svg viewBox="0 0 800 220" class="flow-svg" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="How Sabba ranks packages for each employee">
+        <defs>
+          <marker id="ai-arr" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto"><path d="M0,0 L0,6 L8,3 z" fill="#D4622A"/></marker>
+          <linearGradient id="ai-orb" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#E8834A"/><stop offset="100%" stop-color="#D4622A"/></linearGradient>
+          <filter id="ai-soft" x="-20%" y="-20%" width="140%" height="140%"><feDropShadow dx="0" dy="4" stdDeviation="8" flood-color="#1A2E44" flood-opacity="0.1"/></filter>
+        </defs>
+
+        <!-- Stage 1: signals -->
+        <g transform="translate(95,110)">
+          <rect x="-72" y="-58" width="144" height="116" rx="16" fill="rgba(255,255,255,0.75)" stroke="rgba(255,255,255,0.9)" stroke-width="1" filter="url(#ai-soft)"/>
+          <text x="0" y="-34" text-anchor="middle" font-size="22">🧭</text>
+          <text x="0" y="-11" text-anchor="middle" font-size="11" font-weight="600" fill="#1A2E44" font-family="Inter,sans-serif">Quiz + bookings</text>
+          <text x="0" y="5" text-anchor="middle" font-size="9" fill="#888" font-family="Inter,sans-serif">Interests · budget</text>
+          <text x="0" y="17" text-anchor="middle" font-size="9" fill="#888" font-family="Inter,sans-serif">duration · history</text>
+          <g fill="#D4622A">
+            <circle cx="-30" cy="40" r="3.2"><animate attributeName="opacity" values="0.35;1;0.35" dur="2s" repeatCount="indefinite"/></circle>
+            <circle cx="-18" cy="40" r="3.2"><animate attributeName="opacity" values="0.35;1;0.35" dur="2s" begin="0.2s" repeatCount="indefinite"/></circle>
+            <circle cx="-6" cy="40" r="3.2"><animate attributeName="opacity" values="0.35;1;0.35" dur="2s" begin="0.4s" repeatCount="indefinite"/></circle>
+            <circle cx="6" cy="40" r="3.2"><animate attributeName="opacity" values="0.35;1;0.35" dur="2s" begin="0.6s" repeatCount="indefinite"/></circle>
+            <circle cx="18" cy="40" r="3.2"><animate attributeName="opacity" values="0.35;1;0.35" dur="2s" begin="0.8s" repeatCount="indefinite"/></circle>
+            <circle cx="30" cy="40" r="3.2"><animate attributeName="opacity" values="0.35;1;0.35" dur="2s" begin="1s" repeatCount="indefinite"/></circle>
+          </g>
+        </g>
+
+        <path d="M 172 110 L 250 110" stroke="#D4622A" stroke-width="2" fill="none" marker-end="url(#ai-arr)"/>
+
+        <!-- Stage 2: embedding engine -->
+        <g transform="translate(350,110)">
+          <circle r="62" fill="url(#ai-orb)" filter="url(#ai-soft)"/>
+          <circle r="62" fill="none" stroke="rgba(212,98,42,0.35)" stroke-width="1.5"><animate attributeName="r" values="62;70;62" dur="3s" repeatCount="indefinite"/><animate attributeName="opacity" values="0.55;0;0.55" dur="3s" repeatCount="indefinite"/></circle>
+          <text x="0" y="-16" text-anchor="middle" font-size="24">✨</text>
+          <text x="0" y="8" text-anchor="middle" font-size="12" font-weight="700" fill="#fff" font-family="Inter,sans-serif">OpenAI</text>
+          <text x="0" y="23" text-anchor="middle" font-size="8.5" fill="rgba(255,255,255,0.9)" font-family="Inter,sans-serif">embeddings</text>
+          <text x="0" y="35" text-anchor="middle" font-size="7.5" fill="rgba(255,255,255,0.78)" font-family="Inter,sans-serif">cosine similarity</text>
+        </g>
+
+        <path d="M 420 110 L 498 110" stroke="#D4622A" stroke-width="2" fill="none" marker-end="url(#ai-arr)"/>
+
+        <!-- Stage 3: ranked results -->
+        <g transform="translate(655,110)">
+          <rect x="-78" y="-64" width="156" height="128" rx="16" fill="rgba(255,255,255,0.75)" stroke="rgba(255,255,255,0.9)" stroke-width="1" filter="url(#ai-soft)"/>
+          <rect x="-64" y="-52" width="128" height="22" rx="7" fill="#FEE5D9" stroke="#D4622A" stroke-width="1.3"/>
+          <text x="-54" y="-37" font-size="8.5" font-weight="700" fill="#1A2E44" font-family="Inter,sans-serif">✨ Best match</text>
+          <text x="52" y="-37" text-anchor="end" font-size="8.5" font-weight="700" fill="#D4622A" font-family="Inter,sans-serif">0.92</text>
+          <rect x="-64" y="-25" width="128" height="20" rx="7" fill="#F7F8FA" stroke="#EEE" stroke-width="1"/>
+          <text x="-54" y="-11" font-size="8.5" fill="#555" font-family="Inter,sans-serif">Package B</text>
+          <text x="52" y="-11" text-anchor="end" font-size="8.5" fill="#999" font-family="Inter,sans-serif">0.81</text>
+          <rect x="-64" y="1" width="128" height="20" rx="7" fill="#F7F8FA" stroke="#EEE" stroke-width="1"/>
+          <text x="-54" y="15" font-size="8.5" fill="#555" font-family="Inter,sans-serif">Package C</text>
+          <text x="52" y="15" text-anchor="end" font-size="8.5" fill="#999" font-family="Inter,sans-serif">0.74</text>
+          <rect x="-64" y="27" width="128" height="20" rx="7" fill="#F7F8FA" stroke="#EEE" stroke-width="1"/>
+          <text x="-54" y="41" font-size="8.5" fill="#555" font-family="Inter,sans-serif">Package D</text>
+          <text x="52" y="41" text-anchor="end" font-size="8.5" fill="#999" font-family="Inter,sans-serif">0.68</text>
+        </g>
+        <text x="655" y="192" text-anchor="middle" font-size="9" fill="#888" font-family="Inter,sans-serif">Ranked for this employee</text>
+      </svg>
+    </div>
+
+    <div class="party-row reveal">
+      <div class="party party--accent">
+        <div class="party-n">1</div>
+        <div class="party-who"><span class="party-bar"></span>Every package, embedded</div>
+        <h3>Semantic vectors</h3>
+        <p>Each package's title, category, destination, duration and description is turned into a semantic vector with OpenAI's <code style="color:var(--orange);background:rgba(212,98,42,0.08);padding:1px 6px;border-radius:5px;font-size:12px">text-embedding-3-small</code> model, stored in Postgres with pgvector. New packages embed automatically the moment they're approved.</p>
+      </div>
+      <div class="party party--accent">
+        <div class="party-n">2</div>
+        <div class="party-who"><span class="party-bar"></span>A vector per employee</div>
+        <h3>Live preference profile</h3>
+        <p>Sabba builds a preference vector from each employee's Side Quest quiz answers and past bookings — capturing the interests, budget and trip length they actually gravitate toward, not a static profile.</p>
+      </div>
+      <div class="party party--accent">
+        <div class="party-n">3</div>
+        <div class="party-who"><span class="party-bar"></span>Ranked by relevance</div>
+        <h3>Recommended for you</h3>
+        <p>The marketplace and home page rank every live package by cosine similarity to that employee, flagging the strongest matches with a <strong style="color:var(--orange)">Recommended for you</strong> label. No quiz yet? It falls back gracefully to the standard view.</p>
+      </div>
     </div>
   </div>
 </section>
