@@ -851,7 +851,7 @@ menu.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{btn.classL
           <li>Package management with drag-and-drop images</li>
           <li>Booking pipeline with HR approval integration</li>
           <li>Earnings dashboard with commission tracking</li>
-          <li>8–12% commission — paid by Sabba, not consumers</li>
+          <li>Simple commission — paid by Sabba, not consumers</li>
         </ul>
       </div>
       <!-- Vendor earnings mockup -->
@@ -940,27 +940,23 @@ menu.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{btn.classL
       </div>
     </div>
     <div class="feat-grid reveal stagger">
-      <div class="feat glow-card tilt-card slide-up delay-1"><div class="feat-icon-wrap">✨</div><h4>AI-powered recommendations</h4><p>Every package is embedded as a semantic vector with OpenAI. Each employee's quiz answers and booking history build a preference vector, and the marketplace ranks packages by cosine similarity — so the right side quest surfaces first.</p></div>
+      <div class="feat glow-card tilt-card slide-up delay-1"><div class="feat-icon-wrap">✨</div><h4>AI-powered recommendations</h4><p>Sabba learns what each employee actually wants — from their quiz answers and booking history — and ranks the whole marketplace around them, so the right side quest surfaces first. No two people see the same order.</p></div>
       <div class="feat glow-card tilt-card slide-up delay-1"><div class="feat-icon-wrap">🏘️</div><h4>Community social feed</h4><p>Employees post about upcoming side quests, like and comment on each other's content. A travel matching algorithm connects employees booking the same package within ±30 days.</p></div>
       <div class="feat glow-card tilt-card slide-up delay-2"><div class="feat-icon-wrap">🏆</div><h4>Gamification — Explorer to Legend</h4><p>Five-level progression system with daily points caps. Earn Sabba Points for bookings, posts, comments and likes — redeemable against future bookings (100pts = £1).</p></div>
       <div class="feat glow-card tilt-card slide-up delay-3"><div class="feat-icon-wrap">📋</div><h4>My Bookings — tabbed layout</h4><p>Upcoming, Pending, Past and All tabs with counts. Full booking history, payroll progress bars, HR approval status and one-tap access to booking details.</p></div>
-      <div class="feat glow-card tilt-card slide-up delay-4"><div class="feat-icon-wrap">💳</div><h4>Payroll-integrated checkout</h4><p>Employees choose their payroll spread before adding to cart. Sabba Points redemption panel sits above the fold. Stripe card checkout also supported.</p></div>
-      <div class="feat glow-card tilt-card slide-up delay-1"><div class="feat-icon-wrap">📧</div><h4>Transactional emails via SendGrid</h4><p>Booking submitted notifications to employee and HR admin. Booking approval emails to employee. In-app notification system throughout.</p></div>
+      <div class="feat glow-card tilt-card slide-up delay-4"><div class="feat-icon-wrap">💳</div><h4>Payroll-integrated checkout</h4><p>Employees choose their payroll spread before adding to cart. Sabba Points redemption panel sits above the fold. Secure card checkout also supported.</p></div>
+      <div class="feat glow-card tilt-card slide-up delay-1"><div class="feat-icon-wrap">📧</div><h4>Automated notifications</h4><p>Booking submitted alerts to employee and HR admin. Approval emails to employees. In-app notification system throughout.</p></div>
       <div class="feat glow-card tilt-card slide-up delay-2"><div class="feat-icon-wrap">🔒</div><h4>Security &amp; compliance</h4><p>Rate limiting, HSTS, X-Frame-Options, Referrer-Policy. GDPR-compliant privacy policy live at /privacy. Multi-tenant architecture with full data isolation per employer.</p></div>
       <div class="feat glow-card tilt-card slide-up delay-3"><div class="feat-icon-wrap">⭐</div><h4>Platinum sponsored listings</h4><p>Four premium sidebar ad slots in the Community page. Separate from marketplace featured slots. A distinct vendor revenue stream managed by Super Admin.</p></div>
       <div class="feat glow-card tilt-card slide-up delay-4"><div class="feat-icon-wrap">⚡</div><h4>Performance &amp; UX</h4><p>RouteProgress bar on every navigation. Skeleton loading screens on Home, Marketplace, Bookings and Allowance. Fully mobile-responsive across all three portals.</p></div>
     </div>
     <div class="tech-pills reveal">
-      <div class="tech-pill">React 18</div>
-      <div class="tech-pill">Node.js / Express</div>
-      <div class="tech-pill">PostgreSQL via Supabase</div>
-      <div class="tech-pill">pgvector</div>
-      <div class="tech-pill">OpenAI embeddings</div>
-      <div class="tech-pill">Stripe</div>
-      <div class="tech-pill">SendGrid</div>
-      <div class="tech-pill">Vercel</div>
-      <div class="tech-pill">JWT Auth</div>
-      <div class="tech-pill">Multi-tenant RBAC</div>
+      <div class="tech-pill">AI-powered personalisation</div>
+      <div class="tech-pill">Enterprise-grade security</div>
+      <div class="tech-pill">Multi-tenant architecture</div>
+      <div class="tech-pill">Secure payments</div>
+      <div class="tech-pill">Payroll integration</div>
+      <div class="tech-pill">Built for scale</div>
     </div>
   </div>
 </section>
@@ -977,7 +973,7 @@ menu.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{btn.classL
     <!-- Animated algorithm: signals → embedding → ranked results -->
     <div class="ai-flow reveal">
       <div class="ai-flow-stages">
-        <div class="ai-stage glow-card" aria-label="Step 1: employee signals become a preference vector">
+        <div class="ai-stage glow-card" aria-label="Step 1: Sabba learns each employee's preferences">
           <div class="ai-stage-label">Signals</div>
           <div class="ai-stage-title">Quiz + bookings</div>
           <div class="ai-chips">
@@ -993,13 +989,13 @@ menu.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{btn.classL
 
         <div class="ai-flow-arrow" aria-hidden="true">→</div>
 
-        <div class="ai-stage glow-card" aria-label="Step 2: OpenAI embeds and compares by cosine similarity">
-          <div class="ai-stage-label">Embed</div>
-          <div class="ai-stage-title">OpenAI vectors</div>
+        <div class="ai-stage glow-card" aria-label="Step 2: Sabba's AI matches employees to packages">
+          <div class="ai-stage-label">Match</div>
+          <div class="ai-stage-title">Sabba AI</div>
           <div class="ai-orb-wrap">
             <div class="ai-orb" aria-hidden="true">✨</div>
           </div>
-          <div class="ai-orb-cap">cosine similarity</div>
+          <div class="ai-orb-cap">relevance scoring</div>
         </div>
 
         <div class="ai-flow-arrow" aria-hidden="true">→</div>
@@ -1031,21 +1027,21 @@ menu.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{btn.classL
     <div class="party-row stagger">
       <div class="party party--accent glow-card tilt-card slide-up delay-1">
         <div class="party-n">1</div>
-        <div class="party-who"><span class="party-bar"></span>Every package, embedded</div>
-        <h3>Semantic vectors</h3>
-        <p>Each package's title, category, destination, duration and description is turned into a semantic vector with OpenAI's <code style="color:var(--orange);background:rgba(14,107,168,0.08);padding:1px 6px;border-radius:5px;font-size:12px">text-embedding-3-small</code> model, stored in Postgres with pgvector. New packages embed automatically the moment they're approved.</p>
+        <div class="party-who"><span class="party-bar"></span>Understands every package</div>
+        <h3>Reads what each trip is</h3>
+        <p>Sabba's AI reads every package — its destination, category, duration and description — and understands what kind of experience it really is. New packages are understood automatically the moment they're approved.</p>
       </div>
       <div class="party party--accent glow-card tilt-card slide-up delay-2">
         <div class="party-n">2</div>
-        <div class="party-who"><span class="party-bar"></span>A vector per employee</div>
+        <div class="party-who"><span class="party-bar"></span>Learns each employee</div>
         <h3>Live preference profile</h3>
-        <p>Sabba builds a preference vector from each employee's Side Quest quiz answers and past bookings — capturing the interests, budget and trip length they actually gravitate toward, not a static profile.</p>
+        <p>Sabba learns from each employee's Side Quest quiz answers and past bookings — capturing the interests, budget and trip length they actually gravitate toward, not a static profile.</p>
       </div>
       <div class="party party--accent glow-card tilt-card slide-up delay-3">
         <div class="party-n">3</div>
         <div class="party-who"><span class="party-bar"></span>Ranked by relevance</div>
         <h3>Recommended for you</h3>
-        <p>The marketplace and home page rank every live package by cosine similarity to that employee, flagging the strongest matches with a <strong style="color:var(--orange)">Recommended for you</strong> label. No quiz yet? It falls back gracefully to the standard view.</p>
+        <p>The marketplace and home page rank every live package by how well it fits that employee, flagging the strongest matches with a <strong style="color:var(--orange)">Recommended for you</strong> label. No quiz yet? It falls back gracefully to the standard view.</p>
       </div>
     </div>
   </div>
